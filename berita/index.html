@@ -308,6 +308,92 @@ footer p{
         font-size:26px;
     }
 }
+    .detail-media{
+    margin-top:30px;
+    padding-top:25px;
+    border-top:1px solid #e5e7eb;
+}
+
+.detail-media-title{
+    font-size:20px;
+    font-weight:800;
+    color:#123b5d;
+    margin-bottom:18px;
+}
+
+.media-item{
+    margin-bottom:25px;
+    padding:16px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+}
+
+.media-item img{
+    display:block;
+    width:100%;
+    max-width:700px;
+    max-height:600px;
+    object-fit:contain;
+    margin:auto;
+    border-radius:10px;
+}
+
+.media-item video{
+    display:block;
+    width:100%;
+    max-width:700px;
+    max-height:500px;
+    margin:auto;
+    border-radius:10px;
+    background:#000;
+}
+
+.media-file{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    background:#fff;
+    border:1px solid #dbe3eb;
+    border-radius:10px;
+}
+
+.media-file-icon{
+    font-size:30px;
+}
+
+.media-file-info{
+    flex:1;
+}
+
+.media-file-name{
+    font-weight:700;
+    color:#123b5d;
+    word-break:break-word;
+}
+
+.media-file-btn{
+    display:inline-block;
+    margin-top:7px;
+    padding:8px 14px;
+    background:#1257b8;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+}
+
+@media(max-width:600px){
+    .media-item{
+        padding:10px;
+    }
+
+    .media-item video{
+        max-height:300px;
+    }
+}
 </style>
 </head>
 
@@ -316,7 +402,11 @@ footer p{
 <header class="topbar">
 
     <div class="brand">
-        <div class="brand-icon">G</div>
+        <div class="brand-icon">
+    <img
+        src="https://officialgeparu.github.io/beranda_geparu/logo-geparu.png"
+        alt="GEPARU">
+</div>
 
         <div class="brand-text">
             <strong>GEPARU</strong>
@@ -383,6 +473,7 @@ footer p{
             <h1 id="detailTitle"></h1>
 
             <div id="detailText" class="detail-text"></div>
+            <div id="detailMedia" class="detail-media"></div>
 
         </div>
 
@@ -635,7 +726,199 @@ async function ambilBerita(){
 /* =========================================================
    DETAIL BERITA
    ========================================================= */
+async function ambilMediaBerita(beritaId){
 
+    const mediaBox =
+        document.getElementById("detailMedia");
+
+    if(!mediaBox) return;
+
+    mediaBox.innerHTML = "";
+
+    try{
+
+        const url =
+            SUPABASE_URL +
+            "/rest/v1/berita_media" +
+            "?select=*" +
+            "&berita_id=eq." +
+            encodeURIComponent(beritaId) +
+            "&order=urutan.asc";
+
+        const response =
+            await fetch(url,{
+                headers:{
+                    "apikey":SUPABASE_KEY,
+                    "Authorization":"Bearer " + SUPABASE_KEY
+                }
+            });
+
+        if(!response.ok){
+            console.warn(
+                "Media berita gagal dimuat:",
+                await response.text()
+            );
+            return;
+        }
+
+        const media =
+            await response.json();
+
+        if(!media.length){
+            return;
+        }
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "detail-media-title";
+
+        title.textContent =
+            "Media Berita";
+
+        mediaBox.appendChild(title);
+
+
+        media.forEach(item => {
+
+            const wrapper =
+                document.createElement("div");
+
+            wrapper.className =
+                "media-item";
+
+
+            /* FOTO */
+            if(item.file_type === "FOTO"){
+
+                const img =
+                    document.createElement("img");
+
+                img.src =
+                    item.file_url;
+
+                img.alt =
+                    item.file_name || "Foto berita";
+
+                img.loading =
+                    "lazy";
+
+                wrapper.appendChild(img);
+
+            }
+
+
+            /* VIDEO */
+            else if(item.file_type === "VIDEO"){
+
+                const video =
+                    document.createElement("video");
+
+                video.controls = true;
+                video.preload = "metadata";
+
+                const source =
+                    document.createElement("source");
+
+                source.src =
+                    item.file_url;
+
+                source.type =
+                    item.mime_type ||
+                    "video/mp4";
+
+                video.appendChild(source);
+
+                wrapper.appendChild(video);
+
+            }
+
+
+            /* PDF / DOKUMEN */
+            else{
+
+                const file =
+                    document.createElement("div");
+
+                file.className =
+                    "media-file";
+
+
+                const icon =
+                    document.createElement("div");
+
+                icon.className =
+                    "media-file-icon";
+
+                icon.textContent =
+                    item.mime_type === "application/pdf"
+                    ? "📄"
+                    : "📎";
+
+
+                const info =
+                    document.createElement("div");
+
+                info.className =
+                    "media-file-info";
+
+
+                const name =
+                    document.createElement("div");
+
+                name.className =
+                    "media-file-name";
+
+                name.textContent =
+                    item.file_name ||
+                    "Dokumen berita";
+
+
+                const button =
+                    document.createElement("a");
+
+                button.className =
+                    "media-file-btn";
+
+                button.href =
+                    item.file_url;
+
+                button.target =
+                    "_blank";
+
+                button.rel =
+                    "noopener noreferrer";
+
+                button.textContent =
+                    "Buka Dokumen";
+
+
+                info.appendChild(name);
+
+                info.appendChild(button);
+
+                file.appendChild(icon);
+
+                file.appendChild(info);
+
+                wrapper.appendChild(file);
+            }
+
+
+            mediaBox.appendChild(wrapper);
+
+        });
+
+    }catch(error){
+
+        console.error(
+            "Gagal mengambil media berita:",
+            error
+        );
+
+    }
+}
 async function ambilDetail(slug){
 
     daftarBerita.style.display = "none";
@@ -685,6 +968,11 @@ async function ambilDetail(slug){
 
 
         const item = data[0];
+
+await ambilMediaBerita(item.id);
+
+detailTitle.textContent =
+    item.judul || "";
 
 
         detailTitle.textContent =
