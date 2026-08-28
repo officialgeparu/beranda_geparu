@@ -715,7 +715,7 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 <header>
 <a class="brand" href="#"><div class="logo"><img src="logo-geparu.png" alt="Logo GEPARU"></div><div><div class="bn">GEPARU</div><div class="bs">GENERASI PADJAJARAN BARU</div></div></a>
 <nav>
-<a href="#">Beranda</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/">Aduan</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/#cek-status">Cek Aduan</a><a href="#" onclick="bukaDonasi(); return false;">Donasi</a><a href="https://officialgeparu.github.io/beranda_geparu/berita/">Berita</a><a href="javascript:void(0)" onclick="bukaHubungi()">Hubungi Kami</a><a href="href="#" onclick="bukaVisiMisi(); return false;">Visi &amp; Misi</a><a href="#" onclick="bukaStruktur(); return false;">Struktur</a><a href="https://officialgeparu.github.io/company_profile_geparu/">Company Profile</a>
+<a href="#">Beranda</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/">Aduan</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/#cek-status">Cek Aduan</a><a href="#" onclick="bukaDonasi(); return false;">Donasi</a><a href="https://officialgeparu.github.io/beranda_geparu/berita/">Berita</a><a href="javascript:void(0)" onclick="bukaHubungi()">Hubungi Kami</a><a href="#" onclick="bukaVisiMisi(); return false;">Visi &amp; Misi</a><a href="#" onclick="bukaStruktur(); return false;">Struktur</a><a href="https://officialgeparu.github.io/company_profile_geparu/">Company Profile</a>
 </nav><button class="menu" id="menuBtn" type="button" aria-label="Buka menu">
   ☰
 </button>
@@ -748,7 +748,7 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
     📞 Hubungi Kami
   </a>
 
-  <a href="href="#" onclick="bukaVisiMisi(); return false;">
+  <a href="#" onclick="bukaVisiMisi(); return false;">
     🎯 Visi &amp; Misi
   </a>
 
@@ -1038,7 +1038,10 @@ document.querySelectorAll('#gbNavigation a[href="#gbHubungi"]').forEach(function
 
 });
 </script>
-<!-- POPUP VISI & MISI -->
+<!-- =========================================
+     POPUP VISI & MISI
+========================================= -->
+
 <div id="popupVisiMisi" class="popup-visimisi">
 
   <div class="popup-visimisi-box">
@@ -1046,7 +1049,8 @@ document.querySelectorAll('#gbNavigation a[href="#gbHubungi"]').forEach(function
     <button
       type="button"
       class="popup-visimisi-close"
-      onclick="tutupVisiMisi()">
+      onclick="tutupVisiMisi()"
+      aria-label="Tutup Visi dan Misi">
       ×
     </button>
 
@@ -1113,87 +1117,8 @@ document.querySelectorAll('#gbNavigation a[href="#gbHubungi"]').forEach(function
 
 </div>
 
-    <button
-      type="button"
-      class="popup-visimisi-back"
-      onclick="tutupVisiMisi()">
-      ← Kembali
-    </button>
 
-  </div>
-
-</div>
-  <script>
-
-function bukaVisiMisi(){
-
-  const popup =
-    document.getElementById("popupVisiMisi");
-
-  if(popup){
-    popup.classList.add("show");
-  }
-
-}
-
-function tutupVisiMisi(){
-
-  const popup =
-    document.getElementById("popupVisiMisi");
-
-  if(popup){
-    popup.classList.remove("show");
-  }
-
-}
-
-
-/* Klik Visi Misi dari hamburger */
-
-document
-  .querySelectorAll('#gbNavigation a[href="#gbVisiMisi"]')
-  .forEach(function(link){
-
-    link.onclick = function(e){
-
-      e.preventDefault();
-
-      const nav =
-        document.getElementById("gbNavigation");
-
-      if(nav){
-        nav.classList.remove("gb-open");
-      }
-
-      bukaVisiMisi();
-
-    };
-
-  });
-
-
-/* Klik area gelap untuk menutup */
-
-const popupVisiMisi =
-  document.getElementById("popupVisiMisi");
-
-if(popupVisiMisi){
-
-  popupVisiMisi.addEventListener(
-    "click",
-    function(e){
-
-      if(e.target === popupVisiMisi){
-        tutupVisiMisi();
-      }
-
-    }
-  );
-
-}
-
-</script>
-  <!-- =========================================
+<!-- =========================================
      POPUP STRUKTUR ORGANISASI GEPARU
      PDF RESMI
 ========================================= -->
@@ -1202,6 +1127,7 @@ if(popupVisiMisi){
 
   <div class="popup-struktur-box">
 
+    <!-- HEADER -->
     <div class="popup-struktur-header">
 
       <div class="popup-struktur-title">
@@ -1219,16 +1145,21 @@ if(popupVisiMisi){
 
     </div>
 
+
+    <!-- PDF -->
     <div class="popup-struktur-pdf">
 
       <iframe
         id="strukturPDF"
         src="struktural-geparu.pdf"
-        title="Struktur Organisasi GEPARU">
+        title="Struktur Organisasi GEPARU"
+        loading="lazy">
       </iframe>
 
     </div>
 
+
+    <!-- FOOTER -->
     <div class="popup-struktur-footer">
 
       <a
@@ -1251,54 +1182,134 @@ if(popupVisiMisi){
   </div>
 
 </div>
-  /* =========================================
-   POPUP STRUKTUR ORGANISASI
+
+
+<!-- =========================================
+     JAVASCRIPT POPUP VISI MISI + STRUKTUR
+========================================= -->
+
+<script>
+
+/* =========================================
+   VISI & MISI
 ========================================= */
 
-function bukaStruktur(){
+function bukaVisiMisi(){
 
-  const popup = document.getElementById("popupStruktur");
+  const popup =
+    document.getElementById("popupVisiMisi");
 
   if(!popup) return;
 
   popup.classList.add("show");
 
   document.body.style.overflow = "hidden";
+
 }
 
 
-function tutupStruktur(){
+function tutupVisiMisi(){
 
-  const popup = document.getElementById("popupStruktur");
+  const popup =
+    document.getElementById("popupVisiMisi");
 
   if(!popup) return;
 
   popup.classList.remove("show");
 
   document.body.style.overflow = "";
+
 }
 
 
-/* Klik area gelap untuk menutup */
-document.addEventListener("click", function(e){
+/* =========================================
+   STRUKTUR ORGANISASI
+========================================= */
 
-  const popup = document.getElementById("popupStruktur");
+function bukaStruktur(){
+
+  const popup =
+    document.getElementById("popupStruktur");
 
   if(!popup) return;
 
-  if(e.target === popup){
+  popup.classList.add("show");
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function tutupStruktur(){
+
+  const popup =
+    document.getElementById("popupStruktur");
+
+  if(!popup) return;
+
+  popup.classList.remove("show");
+
+  document.body.style.overflow = "";
+
+}
+
+
+/* =========================================
+   KLIK AREA GELAP UNTUK MENUTUP
+========================================= */
+
+document.addEventListener("click", function(e){
+
+  const popupVisiMisi =
+    document.getElementById("popupVisiMisi");
+
+  const popupStruktur =
+    document.getElementById("popupStruktur");
+
+
+  /* Visi Misi */
+
+  if(
+    popupVisiMisi &&
+    e.target === popupVisiMisi
+  ){
+
+    tutupVisiMisi();
+
+  }
+
+
+  /* Struktur */
+
+  if(
+    popupStruktur &&
+    e.target === popupStruktur
+  ){
+
     tutupStruktur();
+
   }
 
 });
 
 
-/* Tombol ESC untuk menutup */
+/* =========================================
+   TOMBOL ESC
+========================================= */
+
 document.addEventListener("keydown", function(e){
 
   if(e.key === "Escape"){
+
+    tutupVisiMisi();
     tutupStruktur();
+
   }
 
 });
-</body></html>
+
+</script>
+
+
+</body>
+</html>
