@@ -530,18 +530,19 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   cursor:pointer;
 }
 /* =========================================
-   POPUP STRUKTUR GEPARU
+   POPUP STRUKTUR - PDF RESMI GEPARU
 ========================================= */
 
 .popup-struktur{
   display:none;
   position:fixed;
   inset:0;
-  z-index:99998;
-  background:rgba(0,0,0,.55);
+  z-index:99999;
+  background:rgba(0,0,0,.70);
   align-items:center;
   justify-content:center;
   padding:15px;
+  box-sizing:border-box;
 }
 
 .popup-struktur.show{
@@ -551,452 +552,161 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 .popup-struktur-box{
   position:relative;
   width:100%;
-  max-width:1050px;
-  max-height:92vh;
-  overflow-y:auto;
+  max-width:1200px;
+  height:92vh;
   background:#fff;
-  border-radius:20px;
-  padding:28px 25px 25px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  display:flex;
+  flex-direction:column;
+}
+
+.popup-struktur-header{
+  min-height:64px;
+  background:#0757c9;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
   box-sizing:border-box;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  flex-shrink:0;
+}
+
+.popup-struktur-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+  font-weight:800;
+}
+
+.popup-struktur-title span{
+  font-size:22px;
 }
 
 .popup-struktur-close{
-  position:absolute;
-  top:10px;
-  right:12px;
-  width:36px;
-  height:36px;
+  width:38px;
+  height:38px;
   border:0;
   border-radius:50%;
-  background:#eef3f8;
-  color:#123b5d;
-  font-size:27px;
-  cursor:pointer;
-}
-
-.popup-struktur-icon{
-  width:55px;
-  height:55px;
-  margin:0 auto 8px;
-  border-radius:50%;
-  background:#eaf2ff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#0757c9;
+  background:rgba(255,255,255,.18);
+  color:#fff;
   font-size:25px;
-}
-
-.popup-struktur-box h2{
-  margin:0;
-  text-align:center;
-  color:#123b5d;
-  font-size:24px;
-  font-weight:900;
-}
-
-.struktur-subtitle{
-  margin:6px 0 24px;
-  text-align:center;
-  color:#64748b;
-  font-size:13px;
-}
-
-
-/* =========================================
-   LEVEL ATAS
-========================================= */
-
-.struktur-top{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:30px;
-  align-items:center;
-  max-width:850px;
-  margin:auto;
-}
-
-.top-box{
-  min-height:58px;
-  padding:10px 12px;
-  border:2px solid #2563eb;
-  border-radius:10px;
-  background:#eaf2ff;
+  line-height:1;
+  cursor:pointer;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
-  text-align:center;
-  font-size:12px;
-  line-height:1.5;
-}
-
-
-/* =========================================
-   GARIS KOORDINASI ATAS
-========================================= */
-
-.garis-komando-atas{
-  position:relative;
-  width:66%;
-  height:30px;
-  margin:0 auto;
-  border-top:2px dashed #334155;
-}
-
-
-/* =========================================
-   AHMAD FAJAR
-========================================= */
-
-.struktur-ahmad{
-  display:flex;
   justify-content:center;
-  position:relative;
 }
 
-.struktur-box{
-  min-width:145px;
-  padding:11px 15px;
-  border-radius:9px;
-  text-align:center;
-  box-sizing:border-box;
-  font-size:12px;
+.popup-struktur-close:hover{
+  background:rgba(255,255,255,.30);
 }
 
-.struktur-box.biru{
-  background:#dff1ff;
-  border:2px solid #168bd0;
-  color:#102a43;
-}
-
-.struktur-ahmad::before{
-  content:"";
-  position:absolute;
-  top:-30px;
-  left:50%;
-  width:2px;
-  height:30px;
-  background:#334155;
-}
-
-
-/* =========================================
-   HERMANSYAH / SIGIT
-========================================= */
-
-.garis-ahmad{
-  width:25%;
-  height:20px;
-  margin:auto;
-  border-left:2px solid #334155;
-  border-right:2px solid #334155;
-  border-top:2px solid #334155;
-}
-
-.struktur-pengurus{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:90px;
-  position:relative;
-}
-
-.garis-koordinasi-pengurus{
-  position:relative;
-  width:30%;
-  margin:0 auto;
-  border-top:2px dashed #334155;
-}
-
-
-/* =========================================
-   GARIS MENUJU 5 DIVISI
-========================================= */
-
-.garis-divisi-utama{
-  position:relative;
-  width:80%;
-  height:35px;
-  margin:0 auto;
-  border-top:2px solid #334155;
-}
-
-.garis-divisi-utama::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:-35px;
-  height:35px;
-  border-left:2px solid #334155;
-}
-
-
-/* =========================================
-   DIVISI
-========================================= */
-
-.struktur-divisi{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  position:relative;
-}
-
-.struktur-divisi-item{
-  position:relative;
-}
-
-.garis-turun{
-  position:absolute;
-  top:-35px;
-  left:50%;
-  width:2px;
-  height:35px;
-  background:#334155;
-}
-
-.kepala-divisi{
-  min-height:62px;
-  padding:10px 5px;
-  box-sizing:border-box;
-  background:#d8f2c8;
-  border:1px solid #a8d69a;
-  border-radius:9px 9px 0 0;
-  text-align:center;
-}
-
-.kepala-divisi strong{
-  display:block;
-  font-size:11px;
-  line-height:1.4;
-  color:#17351c;
-}
-
-.kepala-divisi span{
-  display:block;
-  margin-top:3px;
-  font-size:12px;
-  font-weight:900;
-  color:#365314;
-}
-
-
-/* =========================================
-   GARIS KOORDINASI ANTAR DIVISI
-========================================= */
-
-.struktur-divisi-item:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  top:30px;
-  left:50%;
-  width:calc(100% + 12px);
-  border-top:2px dashed #334155;
-  z-index:0;
-  pointer-events:none;
-}
-
-.kepala-divisi,
-.anggota-divisi{
-  position:relative;
-  z-index:1;
-}
-
-
-/* =========================================
-   ANGGOTA DIVISI
-========================================= */
-
-.anggota-divisi{
-  border:1px solid #cbd5e1;
-  border-top:0;
-  border-radius:0 0 9px 9px;
+.popup-struktur-pdf{
+  flex:1;
+  min-height:0;
+  background:#e9eef5;
   overflow:hidden;
+}
+
+.popup-struktur-pdf iframe{
+  width:100%;
+  height:100%;
+  min-height:500px;
+  border:0;
+  display:block;
   background:#fff;
 }
 
-.anggota-divisi div{
-  padding:7px 3px;
-  border-bottom:1px solid #cbd5e1;
-  text-align:center;
-  font-size:11px;
-  color:#334155;
-}
-
-.anggota-divisi div:last-child{
-  border-bottom:0;
-}
-
-
-/* =========================================
-   ANGGOTA UMUM
-========================================= */
-
-.garis-anggota{
-  width:2px;
-  height:28px;
-  margin:auto;
-  background:#334155;
-}
-
-.anggota-umum{
-  width:140px;
-  margin:auto;
-  padding:12px;
-  box-sizing:border-box;
-  border:2px solid #c084b5;
-  border-radius:9px;
-  background:#f7d7f1;
-  text-align:center;
-  color:#4a2546;
-  font-size:12px;
-}
-
-
-/* =========================================
-   KETERANGAN
-========================================= */
-
-.struktur-keterangan{
-  margin-top:25px;
-  padding:17px;
-  border-radius:14px;
-  background:#f5f8fc;
-  border:1px solid #e2e8f0;
-}
-
-.struktur-keterangan h3{
-  margin:0 0 12px;
-  color:#0757c9;
-  font-size:17px;
-}
-
-.struktur-keterangan p{
-  margin:7px 0;
-  color:#475569;
-  font-size:13px;
-  line-height:1.5;
-}
-
-
-/* =========================================
-   KETERANGAN GARIS
-========================================= */
-
-.struktur-note{
+.popup-struktur-footer{
+  min-height:58px;
+  background:#fff;
+  border-top:1px solid #e2e8f0;
   display:flex;
-  justify-content:center;
   align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:20px;
-  color:#475569;
-  font-size:12px;
+  justify-content:center;
+  gap:10px;
+  padding:10px 15px;
+  box-sizing:border-box;
+  flex-shrink:0;
 }
 
-.garis-solid{
-  width:45px;
-  height:2px;
-  background:#334155;
-}
-
-.garis-putus{
-  width:45px;
-  border-top:2px dashed #334155;
-}
-
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.popup-struktur-back{
-  display:block;
-  margin:20px auto 0;
-  padding:10px 22px;
+.popup-struktur-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:10px 18px;
   border:0;
   border-radius:9px;
-  background:#edf1f5;
-  color:#123b75;
+  background:#0757c9;
+  color:#fff;
   font-weight:700;
+  text-decoration:none;
   cursor:pointer;
 }
 
+.popup-struktur-btn.kembali{
+  background:#edf1f5;
+  color:#123b75;
+}
 
-/* =========================================
-   MOBILE
-========================================= */
-
+/* MOBILE */
 @media(max-width:700px){
 
   .popup-struktur{
-    padding:7px;
+    padding:0;
   }
 
   .popup-struktur-box{
-    max-height:94vh;
-    padding:25px 10px 20px;
+    width:100%;
+    height:100vh;
+    max-width:none;
+    border-radius:0;
   }
 
-  .popup-struktur-box h2{
-    font-size:21px;
+  .popup-struktur-header{
+    min-height:58px;
+    padding:0 12px;
   }
 
-  .struktur-top{
-    grid-template-columns:1fr;
-    gap:12px;
-    max-width:220px;
+  .popup-struktur-title{
+    font-size:15px;
   }
 
-  .garis-komando-atas{
-    width:2px;
-    height:25px;
-    border-top:0;
-    border-left:2px dashed #334155;
+  .popup-struktur-title span{
+    font-size:19px;
   }
 
-  .struktur-pengurus{
-    gap:12px;
+  .popup-struktur-close{
+    width:36px;
+    height:36px;
+    font-size:23px;
   }
 
-  .struktur-pengurus .struktur-box{
-    min-width:125px;
+  .popup-struktur-pdf{
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
   }
 
-  .garis-ahmad{
-    width:45%;
+  .popup-struktur-pdf iframe{
+    width:100%;
+    height:100%;
+    min-height:calc(100vh - 116px);
   }
 
-  .garis-koordinasi-pengurus{
-    width:40%;
+  .popup-struktur-footer{
+    min-height:58px;
+    padding:8px 10px;
   }
 
-  /*
-     Pada HP divisi dibuat 2 kolom
-     agar masih mudah dibaca.
-  */
-
-  .struktur-divisi{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
+  .popup-struktur-btn{
+    padding:9px 14px;
+    font-size:13px;
   }
-
-  .garis-divisi-utama{
-    width:80%;
-  }
-
-  .kepala-divisi strong{
-    font-size:10px;
-  }
-
-  .anggota-divisi div{
-    font-size:10px;
-    padding:6px 2px;
-  }
-
 }
 </style>
 </head>
@@ -1188,28 +898,7 @@ document.querySelectorAll(".mobile-menu a").forEach(function (link) {
   </div>
 </div>
   <script>
-    function bukaStruktur(){
-
-  const popup =
-    document.getElementById("popupStruktur");
-
-  if(popup){
-    popup.classList.add("show");
-  }
-
-}
-
-function tutupStruktur(){
-
-  const popup =
-    document.getElementById("popupStruktur");
-
-  if(popup){
-    popup.classList.remove("show");
-  }
-
-}
-
+    
 function bukaDonasi(){
   document.getElementById("donasiPopup").classList.add("show");
   document.body.style.overflow="hidden";
@@ -1505,281 +1194,111 @@ if(popupVisiMisi){
 
 </script>
   <!-- =========================================
-     POPUP STRUKTUR GEPARU
-========================================= -->
-
-<!-- =========================================
-     POPUP STRUKTUR GEPARU
+     POPUP STRUKTUR ORGANISASI GEPARU
+     PDF RESMI
 ========================================= -->
 
 <div id="popupStruktur" class="popup-struktur">
 
   <div class="popup-struktur-box">
 
-    <button
-      type="button"
-      class="popup-struktur-close"
-      onclick="tutupStruktur()">
-      ×
-    </button>
+    <div class="popup-struktur-header">
 
-    <div class="popup-struktur-icon">♣</div>
-
-    <h2>Struktur GEPARU</h2>
-
-    <p class="struktur-subtitle">
-      Struktur Organisasi Generasi Padjajaran Baru
-    </p>
-
-
-    <!-- ==============================
-         LEVEL 1
-    =============================== -->
-
-    <div class="struktur-top">
-
-      <div class="top-box">
-        <strong>ADE SANJAYA</strong>
-        <strong>HENDRA BUDIMAN</strong>
+      <div class="popup-struktur-title">
+        <span>🏢</span>
+        Struktur Organisasi GEPARU
       </div>
 
-      <div class="top-box">
-        <strong>SALMAN ALFARISI</strong>
-      </div>
-
-      <div class="top-box">
-        <strong>RIDWAN</strong>
-        <strong>HERDIANSYAH</strong>
-      </div>
+      <button
+        type="button"
+        class="popup-struktur-close"
+        onclick="tutupStruktur()"
+        aria-label="Tutup struktur">
+        ×
+      </button>
 
     </div>
 
+    <div class="popup-struktur-pdf">
 
-    <!-- GARIS KOMANDO DARI LEVEL 1 -->
-    <div class="garis-komando-atas"></div>
-
-
-    <!-- ==============================
-         AHMAD FAJAR
-    =============================== -->
-
-    <div class="struktur-ahmad">
-
-      <div class="struktur-box biru">
-        <strong>AHMAD FAJAR</strong>
-      </div>
+      <iframe
+        id="strukturPDF"
+        src="struktural-geparu.pdf"
+        title="Struktur Organisasi GEPARU">
+      </iframe>
 
     </div>
 
+    <div class="popup-struktur-footer">
 
-    <!-- ==============================
-         HERMANSYAH / SIGIT
-    =============================== -->
+      <a
+        class="popup-struktur-btn"
+        href="struktural-geparu.pdf"
+        target="_blank"
+        rel="noopener">
+        📄 Buka PDF
+      </a>
 
-    <div class="garis-ahmad"></div>
-
-    <div class="struktur-pengurus">
-
-      <div class="struktur-box biru">
-        <strong>HERMANSYAH</strong>
-      </div>
-
-      <div class="struktur-box biru">
-        <strong>SIGIT SUKOCO AW</strong>
-      </div>
-
-    </div>
-
-
-    <!-- GARIS KOORDINASI -->
-    <div class="garis-koordinasi-pengurus"></div>
-
-
-    <!-- ==============================
-         GARIS MENUJU DIVISI
-    =============================== -->
-
-    <div class="garis-divisi-utama"></div>
-
-
-    <!-- ==============================
-         5 DIVISI
-    =============================== -->
-
-    <div class="struktur-divisi">
-
-      <!-- SPB -->
-      <div class="struktur-divisi-item">
-
-        <div class="garis-turun"></div>
-
-        <div class="kepala-divisi">
-          <strong>SAEPUDIN</strong>
-          <span>SPB</span>
-        </div>
-
-        <div class="anggota-divisi">
-          <div>DIKI KIMO</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-        </div>
-
-      </div>
-
-
-      <!-- HIK -->
-      <div class="struktur-divisi-item">
-
-        <div class="garis-turun"></div>
-
-        <div class="kepala-divisi">
-          <strong>M. ANDRIS WIJAYA</strong>
-          <span>HIK</span>
-        </div>
-
-        <div class="anggota-divisi">
-          <div>SUYATNO</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-        </div>
-
-      </div>
-
-
-      <!-- PSDM -->
-      <div class="struktur-divisi-item">
-
-        <div class="garis-turun"></div>
-
-        <div class="kepala-divisi">
-          <strong>IKHWAN</strong>
-          <span>PSDM</span>
-        </div>
-
-        <div class="anggota-divisi">
-          <div>PEKING</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-        </div>
-
-      </div>
-
-
-      <!-- POPK -->
-      <div class="struktur-divisi-item">
-
-        <div class="garis-turun"></div>
-
-        <div class="kepala-divisi">
-          <strong>TYAS FIRMANDI C</strong>
-          <span>POPK</span>
-        </div>
-
-        <div class="anggota-divisi">
-          <div>KIPLI</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-        </div>
-
-      </div>
-
-
-      <!-- EKK -->
-      <div class="struktur-divisi-item">
-
-        <div class="garis-turun"></div>
-
-        <div class="kepala-divisi">
-          <strong>RIZKY SAPUTRA</strong>
-          <span>EKK</span>
-        </div>
-
-        <div class="anggota-divisi">
-          <div>YONA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-          <div>ANGGOTA</div>
-        </div>
-
-      </div>
+      <button
+        type="button"
+        class="popup-struktur-btn kembali"
+        onclick="tutupStruktur()">
+        ← Kembali
+      </button>
 
     </div>
-
-
-    <!-- ==============================
-         ANGGOTA UMUM
-    =============================== -->
-
-    <div class="garis-anggota"></div>
-
-    <div class="anggota-umum">
-      <strong>ANGGOTA</strong>
-    </div>
-
-
-    <!-- ==============================
-         KETERANGAN DIVISI
-    =============================== -->
-
-    <div class="struktur-keterangan">
-
-      <h3>DIVISI GEPARU</h3>
-
-      <p>
-        <strong>PSDM</strong> — Divisi Pengembangan Sumber Daya Manusia
-      </p>
-
-      <p>
-        <strong>POPK</strong> — Divisi Pemuda, Olahraga dan Pembinaan Karakter
-      </p>
-
-      <p>
-        <strong>EKK</strong> — Divisi Ekonomi Kreatif dan Kewirausahaan
-      </p>
-
-      <p>
-        <strong>SPB</strong> — Divisi Sosial dan Penanggulangan Bencana
-      </p>
-
-      <p>
-        <strong>HIK</strong> — Divisi Hubungan Sosial, Informasi dan Komunikasi Publik
-      </p>
-
-    </div>
-
-
-    <!-- ==============================
-         KETERANGAN GARIS
-    =============================== -->
-
-    <div class="struktur-note">
-
-      <span class="garis-solid"></span>
-      <span>Garis Komando</span>
-
-      <span class="garis-putus"></span>
-      <span>Garis Koordinasi</span>
-
-    </div>
-
-
-    <button
-      type="button"
-      class="popup-struktur-back"
-      onclick="tutupStruktur()">
-      ← Kembali
-    </button>
 
   </div>
 
 </div>
+  /* =========================================
+   POPUP STRUKTUR ORGANISASI
+========================================= */
+
+function bukaStruktur(){
+
+  const popup = document.getElementById("popupStruktur");
+
+  if(!popup) return;
+
+  popup.classList.add("show");
+
+  document.body.style.overflow = "hidden";
+}
+
+
+function tutupStruktur(){
+
+  const popup = document.getElementById("popupStruktur");
+
+  if(!popup) return;
+
+  popup.classList.remove("show");
+
+  document.body.style.overflow = "";
+}
+
+
+/* Klik area gelap untuk menutup */
+document.addEventListener("click", function(e){
+
+  const popup = document.getElementById("popupStruktur");
+
+  if(!popup) return;
+
+  if(e.target === popup){
+    tutupStruktur();
+  }
+
+});
+
+
+/* Tombol ESC untuk menutup */
+document.addEventListener("keydown", function(e){
+
+  if(e.key === "Escape"){
+    tutupStruktur();
+  }
+
+});
 </body></html>
