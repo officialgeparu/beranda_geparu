@@ -3,140 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#174ea6">
 <title>GEPARU | Generasi Padjajaran Baru</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#174ea6;--dark:#102a43;--light:#eef5ff;--red:#d62828;--text:#102a43;--muted:#60738a;--bg:#f4f8fc;--line:#d9e3ef}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
-a{text-decoration:none;color:inherit}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}
-header{background:#fff;border-bottom:4px solid var(--blue)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900}
-.brand strong{display:block;font-size:21px;letter-spacing:1px}
-.brand span{font-size:12px;font-weight:700;color:var(--red)}
-.nav-link{font-size:14px;font-weight:700;color:var(--blue)}
-.hero{padding:72px 0 55px;background:radial-gradient(circle at 85% 15%,rgba(23,78,166,.13),transparent 30%),linear-gradient(135deg,#fff,#eef5ff)}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}
-.badge{display:inline-block;padding:8px 15px;border-radius:999px;background:var(--light);color:var(--blue);font-size:13px;font-weight:800;margin-bottom:18px}
-.hero h1{font-size:clamp(38px,6vw,64px);line-height:1.03;letter-spacing:-2px;margin-bottom:15px}
-.hero h1 span{color:var(--blue)}
-.hero h2{font-size:clamp(20px,3vw,30px);margin-bottom:16px}
-.hero p{max-width:650px;color:var(--muted);font-size:17px}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{border:0;border-radius:12px;padding:14px 20px;font-weight:800;font-size:15px;cursor:pointer;display:inline-flex;justify-content:center;align-items:center;gap:8px;transition:.2s}
-.btn:hover{transform:translateY(-2px)}
-.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(23,78,166,.22)}
-.secondary{background:#fff;color:var(--blue);border:2px solid var(--blue)}
-.donate{background:var(--red);color:#fff}
-.hero-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:0 12px 35px rgba(16,42,67,.1)}
-.hero-top{background:var(--blue);color:#fff;border-radius:18px;padding:26px;margin-bottom:15px}
-.hero-top .icon{font-size:42px;margin-bottom:10px}
-.hero-top h3{font-size:23px}
-.hero-top p{color:#dceaff;font-size:14px;margin-top:6px}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.stat{background:#f7faff;border:1px solid var(--line);border-radius:14px;padding:16px}
-.stat strong{display:block;color:var(--blue);font-size:19px}.stat span{font-size:12px;color:var(--muted)}
-section{padding:58px 0}
-.head{text-align:center;max-width:720px;margin:0 auto 30px}
-.eyebrow{color:var(--blue);font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:1px}
-.head h2{font-size:clamp(27px,4vw,38px);margin:6px 0 10px}.head p{color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 6px 20px rgba(16,42,67,.05)}
-.iconbox{width:50px;height:50px;border-radius:14px;background:var(--light);display:grid;place-items:center;font-size:24px;margin-bottom:17px}
-.card h3{margin-bottom:7px}.card p{font-size:14px;color:var(--muted)}
-.quick{background:var(--blue);color:#fff}.quick .head p{color:#dceaff}.quick .eyebrow{color:#dceaff}
-.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.quick-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:22px;padding:28px}
-.quick-card h3{font-size:24px;margin-bottom:8px}.quick-card p{font-size:14px;color:#dceaff;margin-bottom:20px}
-.white{background:#fff;color:var(--blue)}.outline{background:transparent;color:#fff;border:2px solid #fff}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.about-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}.about-card h3{margin-bottom:10px}.about-card p{font-size:14px;color:var(--muted)}
-.values{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.value{padding:15px;border-radius:14px;background:#f6f9fd;border:1px solid var(--line);font-weight:800;font-size:14px}
-.cta{padding-top:25px}.cta-box{background:linear-gradient(135deg,var(--blue),#2563c7);color:#fff;border-radius:26px;padding:38px;text-align:center}.cta-box h2{font-size:30px;margin-bottom:8px}.cta-box p{color:#dceaff;margin-bottom:20px}
-footer{background:var(--dark);color:#dceaff;padding:32px 0;text-align:center}footer strong{color:#fff}footer p{font-size:13px;margin-top:6px}
-@media(max-width:820px){.hero-grid,.quick-grid,.about{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.nav-link{display:none}.hero{padding-top:45px}}
-@media(max-width:520px){.container{width:calc(100% - 22px)}.actions{flex-direction:column}.actions .btn{width:100%}.stats,.values{grid-template-columns:1fr}.quick-card{padding:22px}}
+:root{--b:#0b46b8;--n:#082a67;--g:#f4b400;--bg:#f4f8ff;--t:#102a5c}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--t)}
+a{text-decoration:none;color:inherit}.top{height:42px;background:#0a3e96;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 4%;font-size:13px;font-weight:700}
+header{height:78px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 4%;box-shadow:0 1px 4px #0001}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:56px;height:56px;border:3px solid var(--g);border-radius:50%;display:grid;place-items:center;color:var(--b);font-size:25px;font-weight:900}.bn{font-size:28px;font-weight:900}.bs{font-size:10px;font-weight:700}
+nav{display:flex;gap:22px;font-size:13px;font-weight:700}nav a{padding:29px 0 23px}nav a:first-child{color:#064fd0;border-bottom:3px solid #1558ff}
+.menu{display:none;color:#fff;font-size:30px}
+.hero{background:linear-gradient(110deg,#f8fbff,#dcecff);min-height:350px;overflow:hidden}.hi{max-width:1200px;margin:auto;position:relative;min-height:350px;padding:40px 5%}.copy{width:49%;position:relative;z-index:2}.copy h1{font-size:39px;line-height:1.18;margin:0;color:#102e68}.copy h1 span{color:#0d4ec7}.copy p{font-size:17px;line-height:1.45;max-width:500px}.cta{display:flex;align-items:center;justify-content:space-between;max-width:290px;background:linear-gradient(90deg,#0647ba,#1559d0);color:#fff;padding:12px 12px 12px 18px;border-radius:9px;font-weight:800;box-shadow:0 7px 15px #0041b433}.arr{background:#fff;color:#1555c7;width:27px;height:27px;border-radius:50%;display:grid;place-items:center}
+.trust{display:flex;gap:30px;margin-top:18px;font-size:11px}.trust b{font-size:12px}.ti{color:#0c4cc7;font-size:21px;float:left;margin-right:6px}
+.art{position:absolute;right:0;top:0;width:55%;height:100%;background:linear-gradient(135deg,transparent 20%,#d7e8f7 21% 22%,transparent 23%),linear-gradient(45deg,transparent 35%,#bfd7ec 36% 43%,transparent 44%)}.tower{position:absolute;left:45%;bottom:0;width:62px;height:260px;background:linear-gradient(90deg,#65717d,#b4bec6,#5b6875);clip-path:polygon(43% 0,57% 0,62% 70%,82% 80%,100% 100%,0 100%,18% 80%,38% 70%)}.building{position:absolute;right:3%;bottom:0;width:43%;height:42%;background:#fff;clip-path:polygon(0 28%,50% 0,100% 28%,100% 100%,0 100%);box-shadow:0 -3px 0 #dbe8f5}
+.grid{max-width:1160px;margin:0 auto;padding:0 3%;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;min-height:175px;border-radius:15px;box-shadow:0 7px 22px #14418c1a;display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 12px;position:relative;border:1px solid #e5edf8}.icon{width:64px;height:64px;border-radius:50%;background:#f2f7ff;color:#0b4bc2;display:grid;place-items:center;font-size:35px;margin-bottom:8px}.card h3{margin:0 0 7px;font-size:17px}.card p{margin:0;font-size:11px;line-height:1.45;max-width:170px}.ca{position:absolute;right:12px;bottom:12px;border:1px solid #4d7be0;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;color:#1454c7;font-size:11px}.grid.second{grid-template-columns:repeat(5,1fr);margin-top:10px;margin-bottom:15px}.second .card{min-height:155px}.second .icon{background:transparent}
+footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-width:1200px;margin:auto;padding:25px 5%;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:30px}.foot h4{margin:0 0 10px}.foot p,.foot a{font-size:13px;line-height:1.7}.social{display:flex;gap:10px}.social span{border:1px solid #fff;border-radius:50%;width:28px;height:28px;display:grid;place-items:center}.copyr{text-align:center;border-top:1px solid #ffffff33;padding:9px;font-size:11px}
+@media(max-width:900px){.top{display:none}header{background:#08439f;height:78px}.bn,.bs{color:#fff}.menu{display:block}nav{display:none}.hero{min-height:430px}.hi{padding:28px 6%;min-height:430px}.copy{width:100%}.copy h1{font-size:28px}.copy p{font-size:15px;max-width:350px}.cta{width:100%;max-width:350px}.art{display:none}.trust{justify-content:space-between;gap:8px}.trust .ti{float:none;display:block;text-align:center}.grid{grid-template-columns:repeat(4,1fr);gap:7px;padding:0 4%}.card{min-height:125px;padding:12px 4px;border-radius:10px}.icon{width:48px;height:48px;font-size:25px;margin-bottom:4px}.card h3{font-size:12px}.card p,.ca{display:none}.grid.second{grid-template-columns:repeat(4,1fr);gap:7px;padding:0 4%;margin-top:7px}.second .card{min-height:105px}.second .card:last-child{grid-column:1/-1;min-height:74px;flex-direction:row;justify-content:center;gap:8px}.foot{grid-template-columns:1fr;text-align:center;padding:28px 8%}.foot>div:not(:first-child){display:none}.social{justify-content:center}}
 </style>
 </head>
 <body>
-
+<div class="top"><span>🛡️ &nbsp; BERGERAK BERSAMA, BOGOR LEBIH BAIK</span><span>◉ &nbsp; Hubungi Kami &nbsp;&nbsp;&nbsp; ⌖ &nbsp; Bogor, Jawa Barat</span></div>
 <header>
-<div class="container nav">
-<a class="brand" href="#"><div class="logo">GP</div><div><strong>GEPARU</strong><span>Generasi Padjajaran Baru</span></div></a>
-<a class="nav-link" href="#tentang">Tentang GEPARU</a>
-</div>
+<a class="brand" href="#"><div class="logo">♜</div><div><div class="bn">GEPARU</div><div class="bs">GENERASI PADJAJARAN BARU</div></div></a>
+<nav>
+<a href="#">Beranda</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/">Aduan</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/?open=status">Cek Aduan</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/?open=donasi">Donasi</a><a href="#">Berita</a><a href="#">Hubungi Kami</a><a href="#">Visi &amp; Misi</a><a href="#">Struktur</a><a href="https://officialgeparu.github.io/company_profile_geparu/">Company Profile</a>
+</nav><div class="menu">☰</div>
 </header>
-
-<main>
-<section class="hero">
-<div class="container hero-grid">
-<div>
-<div class="badge">SUARA ANDA, PERUBAHAN UNTUK KITA SEMUA</div>
-<h1>Bersama <span>GEPARU</span><br>Untuk Masyarakat</h1>
-<h2>Layanan Aduan Masyarakat Bogor</h2>
-<p>Sampaikan keluhan, aspirasi, atau informasi mengenai persoalan yang terjadi di lingkungan masyarakat. GEPARU hadir untuk mendengar, mencatat, dan membantu menindaklanjuti laporan sesuai kewenangan dan prosedur yang berlaku.</p>
-<div class="actions">
-<a class="btn primary" href="https://officialgeparu.github.io/layanan_aduan_sosial/">📝 BUAT ADUAN SEKARANG</a>
-<a class="btn secondary" href="https://officialgeparu.github.io/layanan_aduan_sosial/#cek-status">🔎 CEK STATUS ADUAN</a>
-<a class="btn donate" href="https://officialgeparu.github.io/layanan_aduan_sosial/#donasi">❤️ DONASI</a>
-</div>
-</div>
-<div class="hero-card">
-<div class="hero-top"><div class="icon">🤝</div><h3>Suara Masyarakat</h3><p>Setiap laporan adalah bagian dari upaya bersama untuk membangun lingkungan yang lebih baik.</p></div>
-<div class="stats">
-<div class="stat"><strong>Rahasia</strong><span>Identitas dapat dilindungi</span></div>
-<div class="stat"><strong>Terdata</strong><span>Laporan tercatat</span></div>
-<div class="stat"><strong>Terpantau</strong><span>Status dapat dicek</span></div>
-<div class="stat"><strong>Mendengar</strong><span>Aspirasi masyarakat</span></div>
-</div>
-</div>
-</div>
+<section class="hero"><div class="hi"><div class="copy">
+<h1>Bersama GEPARU,<br>Wujudkan Bogor yang<br><span>Aman, Nyaman &amp; Sejahtera</span></h1>
+<p>Sampaikan aduan, berikan masukan, dan bantu kami membangun Bogor yang lebih baik.</p>
+<a class="cta" href="https://officialgeparu.github.io/layanan_aduan_sosial/">✎ &nbsp; Buat Aduan Sekarang <span class="arr">➜</span></a>
+<div class="trust"><div><span class="ti">♢</span><b>Aman</b><br>Terjamin kerahasiaannya</div><div><span class="ti">ϟ</span><b>Cepat</b><br>Proses tindak lanjut</div><div><span class="ti">♧</span><b>Transparan</b><br>Terbuka untuk semua</div></div>
+</div><div class="art"><div class="tower"></div><div class="building"></div></div></div></section>
+<section class="grid">
+<a class="card" href="https://officialgeparu.github.io/layanan_aduan_sosial/?open=donasi"><div class="icon">♥</div><h3>Donasi</h3><p>Bersama membantu sesama yang membutuhkan</p><span class="ca">➜</span></a>
+<a class="card" href="https://officialgeparu.github.io/layanan_aduan_sosial/"><div class="icon">▣</div><h3>Aduan</h3><p>Sampaikan keluhan atau masalah di lingkungan Anda</p><span class="ca">➜</span></a>
+<a class="card" href="https://officialgeparu.github.io/layanan_aduan_sosial/?open=status"><div class="icon">⌕</div><h3>Cek Aduan</h3><p>Pantau perkembangan aduan Anda dengan mudah</p><span class="ca">➜</span></a>
+<a class="card" href="#"><div class="icon">▤</div><h3>Berita</h3><p>Informasi terbaru kegiatan dan program GEPARU</p><span class="ca">➜</span></a>
 </section>
-
-<section>
-<div class="container">
-<div class="head"><div class="eyebrow">Layanan GEPARU</div><h2>Salurkan Suara Anda</h2><p>Gunakan layanan GEPARU sesuai kebutuhan Anda.</p></div>
-<div class="cards">
-<div class="card"><div class="iconbox">📝</div><h3>Buat Aduan</h3><p>Laporkan keluhan, aspirasi, atau informasi yang membutuhkan perhatian dan tindak lanjut.</p></div>
-<div class="card"><div class="iconbox">🔎</div><h3>Cek Status</h3><p>Pantau perkembangan laporan menggunakan nomor aduan yang Anda terima setelah mengirim laporan.</p></div>
-<div class="card"><div class="iconbox">🤝</div><h3>Donasi Sosial</h3><p>Dukungan Anda membantu kegiatan sosial dan kepedulian GEPARU bersama masyarakat.</p></div>
-</div>
-</div>
+<section class="grid second">
+<a class="card" href="#"><div class="icon">⌂</div><h3>Beranda</h3><p>Kembali ke halaman utama</p></a>
+<a class="card" href="#"><div class="icon">♧</div><h3>Hubungi Kami</h3><p>Hubungi kami untuk informasi lebih lanjut</p></a>
+<a class="card" href="#"><div class="icon">◎</div><h3>Visi &amp; Misi</h3><p>Visi dan misi GEPARU untuk masa depan</p></a>
+<a class="card" href="#"><div class="icon">♧</div><h3>Struktur</h3><p>Struktur organisasi GEPARU</p></a>
+<a class="card" href="https://officialgeparu.github.io/company_profile_geparu/"><div class="icon">▥</div><h3>Company Profile</h3><p>Profil lengkap tentang GEPARU</p></a>
 </section>
-
-<section class="quick">
-<div class="container">
-<div class="head"><div class="eyebrow">Akses Cepat</div><h2>Butuh Layanan?</h2><p>Pilih layanan yang ingin Anda gunakan.</p></div>
-<div class="quick-grid">
-<div class="quick-card"><h3>📝 Buat Aduan Sekarang</h3><p>Sampaikan laporan Anda melalui formulir layanan aduan GEPARU.</p><a class="btn white" href="https://officialgeparu.github.io/layanan_aduan_sosial/">BUKA FORM ADUAN</a></div>
-<div class="quick-card"><h3>🔎 Cek Status Aduan</h3><p>Masukkan nomor aduan untuk mengetahui perkembangan laporan Anda.</p><a class="btn outline" href="https://officialgeparu.github.io/layanan_aduan_sosial/#cek-status">CEK STATUS</a></div>
-</div>
-</div>
-</section>
-
-<section id="tentang">
-<div class="container">
-<div class="head"><div class="eyebrow">Tentang GEPARU</div><h2>Generasi Padjajaran Baru</h2><p>Bersosialisasi, bersatu, bersinergi, dan membantu sesama.</p></div>
-<div class="about">
-<div class="about-card"><h3>🤝 Bersama Masyarakat</h3><p>GEPARU menjadi ruang untuk menyampaikan suara masyarakat dan membangun kepedulian terhadap lingkungan sekitar.</p><div class="values"><div class="value">🔒 Rahasia</div><div class="value">👂 Mendengar</div><div class="value">📋 Terdata</div><div class="value">🔎 Terpantau</div></div></div>
-<div class="about-card"><h3>🌱 Semangat Bersinergi</h3><p>Mendorong masyarakat untuk bersosialisasi, bersatu, menghindari tawuran pelajar, serta saling membantu dalam kegiatan sosial.</p></div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="container"><div class="cta-box"><h2>Kenali GEPARU Lebih Dekat</h2><p>Lihat informasi lengkap mengenai GEPARU dan profil organisasi.</p><a class="btn white" href="https://officialgeparu.github.io/company_profile_geparu/">🏢 COMPANY PROFILE</a></div></div>
-</section>
-
-<section class="cta">
-<div class="container"><div class="cta-box"><h2>❤️ Dukung Kegiatan Sosial GEPARU</h2><p>Sedikit keikhlasanmu sangat bermanfaat untuk sesama.</p><a class="btn white" href="https://officialgeparu.github.io/layanan_aduan_sosial/#donasi">OPEN DONASI SOSIAL</a></div></div>
-</section>
-</main>
-
-<footer><div class="container"><strong>GEPARU — Generasi Padjajaran Baru</strong><p>Suara Anda, Perubahan untuk Kita Semua</p></div></footer>
-</body>
-</html>
+<footer><div class="foot"><div><b style="font-size:25px">♜ GEPARU</b><div style="font-size:10px">GENERASI PADJAJARAN BARU</div><p>Bersama GEPARU, wujudkan Bogor yang aman, nyaman dan sejahtera.</p><div class="social"><span>f</span><span>◎</span><span>▶</span><span>◔</span></div></div><div><h4>Layanan</h4><a href="https://officialgeparu.github.io/layanan_aduan_sosial/">Aduan</a><br><a href="https://officialgeparu.github.io/layanan_aduan_sosial/?open=status">Cek Aduan</a><br><a href="https://officialgeparu.github.io/layanan_aduan_sosial/?open=donasi">Donasi</a><br>Berita</div><div><h4>Informasi</h4>Visi &amp; Misi<br>Struktur<br><a href="https://officialgeparu.github.io/company_profile_geparu/">Company Profile</a></div><div><h4>Hubungi Kami</h4><p>◔ 0812-3456-7890</p><p>✉ info@geparu.id</p><p>⌖ Bogor, Jawa Barat</p></div></div><div class="copyr">© 2025 GEPARU - Generasi Padjajaran Baru. All Rights Reserved.</div></footer>
+</body></html>
