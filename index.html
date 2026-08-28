@@ -529,7 +529,7 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   font-weight:700;
   cursor:pointer;
 }
-  /* =========================================
+/* =========================================
    POPUP STRUKTUR GEPARU
 ========================================= */
 
@@ -551,12 +551,12 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 .popup-struktur-box{
   position:relative;
   width:100%;
-  max-width:950px;
+  max-width:1050px;
   max-height:92vh;
   overflow-y:auto;
   background:#fff;
   border-radius:20px;
-  padding:30px 25px 25px;
+  padding:28px 25px 25px;
   box-sizing:border-box;
   box-shadow:0 20px 60px rgba(0,0,0,.3);
 }
@@ -576,140 +576,293 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 }
 
 .popup-struktur-icon{
-  width:58px;
-  height:58px;
-  margin:0 auto 10px;
+  width:55px;
+  height:55px;
+  margin:0 auto 8px;
   border-radius:50%;
   background:#eaf2ff;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#0757c9;
-  font-size:27px;
+  font-size:25px;
 }
 
 .popup-struktur-box h2{
   margin:0;
   text-align:center;
   color:#123b5d;
-  font-size:25px;
+  font-size:24px;
   font-weight:900;
 }
 
 .struktur-subtitle{
-  margin:7px 0 25px;
+  margin:6px 0 24px;
   text-align:center;
   color:#64748b;
-  font-size:14px;
+  font-size:13px;
 }
 
-/* LEVEL */
 
-.struktur-level{
+/* =========================================
+   LEVEL ATAS
+========================================= */
+
+.struktur-top{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:30px;
+  align-items:center;
+  max-width:850px;
+  margin:auto;
+}
+
+.top-box{
+  min-height:58px;
+  padding:10px 12px;
+  border:2px solid #2563eb;
+  border-radius:10px;
+  background:#eaf2ff;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:18px;
-  margin-bottom:18px;
-  flex-wrap:wrap;
-}
-
-.level-atas{
-  justify-content:space-around;
-}
-
-.level-pengurus{
-  gap:35px;
-}
-
-/* CARD PIMPINAN */
-
-.struktur-card{
-  min-width:150px;
-  padding:12px 16px;
-  border-radius:10px;
   text-align:center;
-  background:#fff;
-  border:2px solid #1d4ed8;
-  color:#102a43;
-  box-sizing:border-box;
-}
-
-.struktur-card strong{
-  display:block;
-  font-size:13px;
+  font-size:12px;
   line-height:1.5;
 }
 
-.struktur-card.pimpinan{
-  background:#eaf2ff;
+
+/* =========================================
+   GARIS KOORDINASI ATAS
+========================================= */
+
+.garis-komando-atas{
+  position:relative;
+  width:66%;
+  height:30px;
+  margin:0 auto;
+  border-top:2px dashed #334155;
 }
 
-.struktur-card.utama{
+
+/* =========================================
+   AHMAD FAJAR
+========================================= */
+
+.struktur-ahmad{
+  display:flex;
+  justify-content:center;
+  position:relative;
+}
+
+.struktur-box{
+  min-width:145px;
+  padding:11px 15px;
+  border-radius:9px;
+  text-align:center;
+  box-sizing:border-box;
+  font-size:12px;
+}
+
+.struktur-box.biru{
   background:#dff1ff;
-  border-color:#0757c9;
+  border:2px solid #168bd0;
+  color:#102a43;
 }
 
-.anggota-besar{
-  background:#f7d7f1;
-  border-color:#c084b5;
+.struktur-ahmad::before{
+  content:"";
+  position:absolute;
+  top:-30px;
+  left:50%;
+  width:2px;
+  height:30px;
+  background:#334155;
 }
 
-/* DIVISI */
+
+/* =========================================
+   HERMANSYAH / SIGIT
+========================================= */
+
+.garis-ahmad{
+  width:25%;
+  height:20px;
+  margin:auto;
+  border-left:2px solid #334155;
+  border-right:2px solid #334155;
+  border-top:2px solid #334155;
+}
+
+.struktur-pengurus{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:90px;
+  position:relative;
+}
+
+.garis-koordinasi-pengurus{
+  position:relative;
+  width:30%;
+  margin:0 auto;
+  border-top:2px dashed #334155;
+}
+
+
+/* =========================================
+   GARIS MENUJU 5 DIVISI
+========================================= */
+
+.garis-divisi-utama{
+  position:relative;
+  width:80%;
+  height:35px;
+  margin:0 auto;
+  border-top:2px solid #334155;
+}
+
+.garis-divisi-utama::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-35px;
+  height:35px;
+  border-left:2px solid #334155;
+}
+
+
+/* =========================================
+   DIVISI
+========================================= */
 
 .struktur-divisi{
   display:grid;
   grid-template-columns:repeat(5,1fr);
   gap:12px;
-  margin-top:20px;
+  position:relative;
 }
 
-.divisi-card{
+.struktur-divisi-item{
+  position:relative;
+}
+
+.garis-turun{
+  position:absolute;
+  top:-35px;
+  left:50%;
+  width:2px;
+  height:35px;
+  background:#334155;
+}
+
+.kepala-divisi{
+  min-height:62px;
+  padding:10px 5px;
+  box-sizing:border-box;
+  background:#d8f2c8;
+  border:1px solid #a8d69a;
+  border-radius:9px 9px 0 0;
+  text-align:center;
+}
+
+.kepala-divisi strong{
+  display:block;
+  font-size:11px;
+  line-height:1.4;
+  color:#17351c;
+}
+
+.kepala-divisi span{
+  display:block;
+  margin-top:3px;
+  font-size:12px;
+  font-weight:900;
+  color:#365314;
+}
+
+
+/* =========================================
+   GARIS KOORDINASI ANTAR DIVISI
+========================================= */
+
+.struktur-divisi-item:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:30px;
+  left:50%;
+  width:calc(100% + 12px);
+  border-top:2px dashed #334155;
+  z-index:0;
+  pointer-events:none;
+}
+
+.kepala-divisi,
+.anggota-divisi{
+  position:relative;
+  z-index:1;
+}
+
+
+/* =========================================
+   ANGGOTA DIVISI
+========================================= */
+
+.anggota-divisi{
   border:1px solid #cbd5e1;
-  border-radius:10px;
+  border-top:0;
+  border-radius:0 0 9px 9px;
   overflow:hidden;
   background:#fff;
 }
 
-.divisi-header{
-  padding:11px 6px;
-  text-align:center;
-  background:#d8f2c8;
-  border-bottom:1px solid #a8d69a;
-}
-
-.divisi-header strong{
-  display:block;
-  font-size:12px;
-  color:#17351c;
-  line-height:1.4;
-}
-
-.divisi-header span{
-  display:block;
-  margin-top:4px;
-  font-size:12px;
-  font-weight:800;
-  color:#365314;
-}
-
-.anggota-list div{
-  padding:7px 4px;
+.anggota-divisi div{
+  padding:7px 3px;
   border-bottom:1px solid #cbd5e1;
   text-align:center;
-  font-size:12px;
+  font-size:11px;
   color:#334155;
 }
 
-.anggota-list div:last-child{
+.anggota-divisi div:last-child{
   border-bottom:0;
 }
 
-/* KETERANGAN */
+
+/* =========================================
+   ANGGOTA UMUM
+========================================= */
+
+.garis-anggota{
+  width:2px;
+  height:28px;
+  margin:auto;
+  background:#334155;
+}
+
+.anggota-umum{
+  width:140px;
+  margin:auto;
+  padding:12px;
+  box-sizing:border-box;
+  border:2px solid #c084b5;
+  border-radius:9px;
+  background:#f7d7f1;
+  text-align:center;
+  color:#4a2546;
+  font-size:12px;
+}
+
+
+/* =========================================
+   KETERANGAN
+========================================= */
 
 .struktur-keterangan{
   margin-top:25px;
-  padding:18px;
+  padding:17px;
   border-radius:14px;
   background:#f5f8fc;
   border:1px solid #e2e8f0;
@@ -728,14 +881,17 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   line-height:1.5;
 }
 
-/* NOTE */
+
+/* =========================================
+   KETERANGAN GARIS
+========================================= */
 
 .struktur-note{
   display:flex;
-  align-items:center;
   justify-content:center;
-  gap:8px;
+  align-items:center;
   flex-wrap:wrap;
+  gap:8px;
   margin-top:20px;
   color:#475569;
   font-size:12px;
@@ -752,7 +908,10 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   border-top:2px dashed #334155;
 }
 
-/* BACK */
+
+/* =========================================
+   BUTTON
+========================================= */
 
 .popup-struktur-back{
   display:block;
@@ -766,155 +925,78 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   cursor:pointer;
 }
 
-/* HP */
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:700px){
 
   .popup-struktur{
-    padding:8px;
+    padding:7px;
   }
 
   .popup-struktur-box{
     max-height:94vh;
-    padding:25px 12px 20px;
-    border-radius:17px;
+    padding:25px 10px 20px;
   }
 
   .popup-struktur-box h2{
     font-size:21px;
   }
 
-  .struktur-subtitle{
-    font-size:12px;
+  .struktur-top{
+    grid-template-columns:1fr;
+    gap:12px;
+    max-width:220px;
   }
+
+  .garis-komando-atas{
+    width:2px;
+    height:25px;
+    border-top:0;
+    border-left:2px dashed #334155;
+  }
+
+  .struktur-pengurus{
+    gap:12px;
+  }
+
+  .struktur-pengurus .struktur-box{
+    min-width:125px;
+  }
+
+  .garis-ahmad{
+    width:45%;
+  }
+
+  .garis-koordinasi-pengurus{
+    width:40%;
+  }
+
+  /*
+     Pada HP divisi dibuat 2 kolom
+     agar masih mudah dibaca.
+  */
 
   .struktur-divisi{
     grid-template-columns:repeat(2,1fr);
     gap:10px;
   }
 
-  .struktur-card{
-    min-width:125px;
+  .garis-divisi-utama{
+    width:80%;
   }
 
-  .struktur-card strong{
-    font-size:11px;
+  .kepala-divisi strong{
+    font-size:10px;
   }
 
-  .divisi-header strong{
-    font-size:11px;
+  .anggota-divisi div{
+    font-size:10px;
+    padding:6px 2px;
   }
 
-  .anggota-list div{
-    font-size:11px;
-  }
-
-}
-  /* =========================================
-   GARIS STRUKTUR ORGANISASI
-========================================= */
-
-/* garis vertikal komando */
-.struktur-level{
-  position:relative;
-}
-
-/* garis komando vertikal antar level */
-.level-atas::after{
-  content:"";
-  position:absolute;
-  top:100%;
-  left:50%;
-  width:2px;
-  height:18px;
-  background:#334155;
-}
-
-.level-pengurus::after{
-  content:"";
-  position:absolute;
-  top:100%;
-  left:50%;
-  width:2px;
-  height:20px;
-  background:#334155;
-}
-
-/* garis horizontal koordinasi bagian atas */
-.level-atas::before{
-  content:"";
-  position:absolute;
-  top:50%;
-  left:18%;
-  right:18%;
-  border-top:2px dashed #334155;
-}
-
-/* garis koordinasi antar pimpinan */
-.level-pengurus::before{
-  content:"";
-  position:absolute;
-  top:50%;
-  left:35%;
-  right:35%;
-  border-top:2px dashed #334155;
-}
-
-/* garis menuju kelompok divisi */
-.level-pengurus + .struktur-divisi{
-  position:relative;
-  padding-top:22px;
-}
-
-.level-pengurus + .struktur-divisi::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:10%;
-  right:10%;
-  border-top:2px solid #334155;
-}
-
-/* garis vertikal menuju divisi */
-.divisi-card{
-  position:relative;
-}
-
-.divisi-card::before{
-  content:"";
-  position:absolute;
-  top:-23px;
-  left:50%;
-  width:2px;
-  height:23px;
-  background:#334155;
-}
-
-/* garis koordinasi antar kepala divisi */
-.struktur-divisi::after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:10%;
-  right:10%;
-  border-top:2px dashed #334155;
-  pointer-events:none;
-}
-
-/* garis menuju anggota bawah */
-.struktur-divisi + .struktur-level{
-  position:relative;
-  padding-top:22px;
-}
-
-.struktur-divisi + .struktur-level::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:50%;
-  width:2px;
-  height:22px;
-  background:#334155;
 }
 </style>
 </head>
@@ -1426,6 +1508,10 @@ if(popupVisiMisi){
      POPUP STRUKTUR GEPARU
 ========================================= -->
 
+<!-- =========================================
+     POPUP STRUKTUR GEPARU
+========================================= -->
+
 <div id="popupStruktur" class="popup-struktur">
 
   <div class="popup-struktur-box">
@@ -1445,59 +1531,94 @@ if(popupVisiMisi){
       Struktur Organisasi Generasi Padjajaran Baru
     </p>
 
-    <!-- PIMPINAN ATAS -->
-    <div class="struktur-level level-atas">
 
-      <div class="struktur-card pimpinan">
+    <!-- ==============================
+         LEVEL 1
+    =============================== -->
+
+    <div class="struktur-top">
+
+      <div class="top-box">
         <strong>ADE SANJAYA</strong>
         <strong>HENDRA BUDIMAN</strong>
       </div>
 
-      <div class="struktur-card pimpinan">
+      <div class="top-box">
         <strong>SALMAN ALFARISI</strong>
       </div>
 
-      <div class="struktur-card pimpinan">
+      <div class="top-box">
         <strong>RIDWAN</strong>
         <strong>HERDIANSYAH</strong>
       </div>
 
     </div>
 
-    <!-- PIMPINAN TENGAH -->
-    <div class="struktur-level">
 
-      <div class="struktur-card pimpinan utama">
+    <!-- GARIS KOMANDO DARI LEVEL 1 -->
+    <div class="garis-komando-atas"></div>
+
+
+    <!-- ==============================
+         AHMAD FAJAR
+    =============================== -->
+
+    <div class="struktur-ahmad">
+
+      <div class="struktur-box biru">
         <strong>AHMAD FAJAR</strong>
       </div>
 
     </div>
 
-    <!-- PENGURUS -->
-    <div class="struktur-level level-pengurus">
 
-      <div class="struktur-card pimpinan">
+    <!-- ==============================
+         HERMANSYAH / SIGIT
+    =============================== -->
+
+    <div class="garis-ahmad"></div>
+
+    <div class="struktur-pengurus">
+
+      <div class="struktur-box biru">
         <strong>HERMANSYAH</strong>
       </div>
 
-      <div class="struktur-card pimpinan">
+      <div class="struktur-box biru">
         <strong>SIGIT SUKOCO AW</strong>
       </div>
 
     </div>
 
-    <!-- DIVISI -->
+
+    <!-- GARIS KOORDINASI -->
+    <div class="garis-koordinasi-pengurus"></div>
+
+
+    <!-- ==============================
+         GARIS MENUJU DIVISI
+    =============================== -->
+
+    <div class="garis-divisi-utama"></div>
+
+
+    <!-- ==============================
+         5 DIVISI
+    =============================== -->
+
     <div class="struktur-divisi">
 
       <!-- SPB -->
-      <div class="divisi-card">
+      <div class="struktur-divisi-item">
 
-        <div class="divisi-header">
+        <div class="garis-turun"></div>
+
+        <div class="kepala-divisi">
           <strong>SAEPUDIN</strong>
           <span>SPB</span>
         </div>
 
-        <div class="anggota-list">
+        <div class="anggota-divisi">
           <div>DIKI KIMO</div>
           <div>ANGGOTA</div>
           <div>ANGGOTA</div>
@@ -1507,15 +1628,18 @@ if(popupVisiMisi){
 
       </div>
 
-      <!-- HIK -->
-      <div class="divisi-card">
 
-        <div class="divisi-header">
+      <!-- HIK -->
+      <div class="struktur-divisi-item">
+
+        <div class="garis-turun"></div>
+
+        <div class="kepala-divisi">
           <strong>M. ANDRIS WIJAYA</strong>
           <span>HIK</span>
         </div>
 
-        <div class="anggota-list">
+        <div class="anggota-divisi">
           <div>SUYATNO</div>
           <div>ANGGOTA</div>
           <div>ANGGOTA</div>
@@ -1525,15 +1649,18 @@ if(popupVisiMisi){
 
       </div>
 
-      <!-- PSDM -->
-      <div class="divisi-card">
 
-        <div class="divisi-header">
+      <!-- PSDM -->
+      <div class="struktur-divisi-item">
+
+        <div class="garis-turun"></div>
+
+        <div class="kepala-divisi">
           <strong>IKHWAN</strong>
           <span>PSDM</span>
         </div>
 
-        <div class="anggota-list">
+        <div class="anggota-divisi">
           <div>PEKING</div>
           <div>ANGGOTA</div>
           <div>ANGGOTA</div>
@@ -1543,15 +1670,18 @@ if(popupVisiMisi){
 
       </div>
 
-      <!-- POPK -->
-      <div class="divisi-card">
 
-        <div class="divisi-header">
+      <!-- POPK -->
+      <div class="struktur-divisi-item">
+
+        <div class="garis-turun"></div>
+
+        <div class="kepala-divisi">
           <strong>TYAS FIRMANDI C</strong>
           <span>POPK</span>
         </div>
 
-        <div class="anggota-list">
+        <div class="anggota-divisi">
           <div>KIPLI</div>
           <div>ANGGOTA</div>
           <div>ANGGOTA</div>
@@ -1561,15 +1691,18 @@ if(popupVisiMisi){
 
       </div>
 
-      <!-- EKK -->
-      <div class="divisi-card">
 
-        <div class="divisi-header">
+      <!-- EKK -->
+      <div class="struktur-divisi-item">
+
+        <div class="garis-turun"></div>
+
+        <div class="kepala-divisi">
           <strong>RIZKY SAPUTRA</strong>
           <span>EKK</span>
         </div>
 
-        <div class="anggota-list">
+        <div class="anggota-divisi">
           <div>YONA</div>
           <div>ANGGOTA</div>
           <div>ANGGOTA</div>
@@ -1581,16 +1714,22 @@ if(popupVisiMisi){
 
     </div>
 
-    <!-- ANGGOTA -->
-    <div class="struktur-level">
 
-      <div class="struktur-card anggota-besar">
-        <strong>ANGGOTA</strong>
-      </div>
+    <!-- ==============================
+         ANGGOTA UMUM
+    =============================== -->
 
+    <div class="garis-anggota"></div>
+
+    <div class="anggota-umum">
+      <strong>ANGGOTA</strong>
     </div>
 
-    <!-- KETERANGAN DIVISI -->
+
+    <!-- ==============================
+         KETERANGAN DIVISI
+    =============================== -->
+
     <div class="struktur-keterangan">
 
       <h3>DIVISI GEPARU</h3>
@@ -1617,6 +1756,11 @@ if(popupVisiMisi){
 
     </div>
 
+
+    <!-- ==============================
+         KETERANGAN GARIS
+    =============================== -->
+
     <div class="struktur-note">
 
       <span class="garis-solid"></span>
@@ -1626,6 +1770,7 @@ if(popupVisiMisi){
       <span>Garis Koordinasi</span>
 
     </div>
+
 
     <button
       type="button"
