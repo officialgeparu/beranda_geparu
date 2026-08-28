@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Berita GEPARU | Generasi Padjajaran Baru</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --red:#a80000;
+    --dark:#07111b;
+    --text:#18222d;
+    --muted:#68737e;
+    --bg:#f5f7f9;
+    --white:#ffffff;
+    --border:#e3e7eb;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.topbar{
+    height:72px;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:800;
+}
+
+.brand-icon{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--red);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.brand-text{
+    line-height:1.15;
+}
+
+.brand-text strong{
+    display:block;
+    font-size:18px;
+}
+
+.brand-text span{
+    font-size:11px;
+    color:#6d747b;
+}
+
+.back{
+    border:0;
+    background:#07111b;
+    color:#fff;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.hero{
+    background:linear-gradient(135deg,#07111b,#152331);
+    color:#fff;
+    padding:55px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    font-size:36px;
+}
+
+.hero p{
+    margin:0;
+    color:#d8dee3;
+    font-size:15px;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:40px auto;
+}
+
+.section-title{
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    margin:0;
+    font-size:25px;
+}
+
+.section-title p{
+    margin:7px 0 0;
+    color:var(--muted);
+}
+
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.news-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    transition:.2s;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.news-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+}
+
+.news-image{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+    background:#e9edf0;
+}
+
+.no-image{
+    width:100%;
+    height:210px;
+    background:#e9edf0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#7b858d;
+    font-size:40px;
+}
+
+.news-body{
+    padding:20px;
+}
+
+.news-date{
+    color:var(--red);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:9px;
+}
+
+.news-title{
+    font-size:19px;
+    font-weight:800;
+    line-height:1.3;
+    margin-bottom:10px;
+}
+
+.news-excerpt{
+    color:#65707a;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.read-more{
+    display:inline-block;
+    margin-top:16px;
+    color:var(--red);
+    font-size:13px;
+    font-weight:800;
+}
+
+.loading,
+.empty,
+.error{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:35px;
+    text-align:center;
+    color:#68737e;
+}
+
+.detail{
+    display:none;
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,.07);
+}
+
+.detail-image{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    display:block;
+}
+
+.detail-content{
+    padding:35px;
+}
+
+.detail-date{
+    color:var(--red);
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.detail h1{
+    font-size:34px;
+    line-height:1.25;
+    margin:0 0 20px;
+}
+
+.detail-text{
+    font-size:16px;
+    line-height:1.8;
+    color:#39434c;
+    white-space:pre-line;
+}
+
+.back-news{
+    display:inline-block;
+    margin-bottom:20px;
+    color:var(--red);
+    font-weight:700;
+    cursor:pointer;
+}
+
+footer{
+    margin-top:60px;
+    background:#07111b;
+    color:#fff;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer strong{
+    font-size:24px;
+}
+
+footer p{
+    margin:7px 0 0;
+    color:#aeb8c0;
+    font-size:12px;
+}
+
+@media(max-width:850px){
+    .news-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .topbar{
+        padding:0 15px;
+    }
+
+    .brand-text strong{
+        font-size:15px;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .news-grid{
+        grid-template-columns:1fr;
+    }
+
+    .detail-content{
+        padding:22px;
+    }
+
+    .detail h1{
+        font-size:26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-icon">G</div>
+
+        <div class="brand-text">
+            <strong>GEPARU</strong>
+            <span>Generasi Padjajaran Baru</span>
+        </div>
+    </div>
+
+    <button class="back" onclick="kembaliBeranda()">
+        ← Kembali
+    </button>
+
+</header>
+
+
+<section class="hero">
+    <h1>Berita GEPARU</h1>
+    <p>Informasi terbaru kegiatan dan program Generasi Padjajaran Baru</p>
+</section>
+
+
+<main class="container">
+
+    <!-- DAFTAR BERITA -->
+    <div id="daftarBerita">
+
+        <div class="section-title">
+            <h2>Berita Terbaru</h2>
+            <p>Informasi dan kegiatan terbaru GEPARU</p>
+        </div>
+
+        <div id="loading" class="loading">
+            Memuat berita...
+        </div>
+
+        <div id="newsGrid" class="news-grid"></div>
+
+        <div id="empty" class="empty" style="display:none;">
+            Belum ada berita yang diterbitkan.
+        </div>
+
+        <div id="error" class="error" style="display:none;">
+            Berita belum dapat dimuat. Silakan coba beberapa saat lagi.
+        </div>
+
+    </div>
+
+
+    <!-- DETAIL BERITA -->
+    <article id="detailBerita" class="detail">
+
+        <div class="detail-content">
+
+            <a class="back-news" onclick="tampilkanDaftar()">
+                ← Kembali ke Berita
+            </a>
+
+            <img id="detailImage"
+                 class="detail-image"
+                 style="display:none;"
+                 alt="">
+
+            <div id="detailDate" class="detail-date"></div>
+
+            <h1 id="detailTitle"></h1>
+
+            <div id="detailText" class="detail-text"></div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer>
+    <strong>GEPARU</strong>
+    <p>Generasi Padjajaran Baru</p>
+    <p>Bersama membangun Bogor yang aman, nyaman dan sejahtera.</p>
+</footer>
+
+
+<script>
+
+/* =========================================================
+   KONFIGURASI SUPABASE
+   ========================================================= */
+
+const SUPABASE_URL =
+    "https://fysaxpqpqexjnlpkbwap.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_DWRaEZTcNMjhglwN3nqCOw_pua8rsjD";
+
+
+/* =========================================================
+   ELEMENT
+   ========================================================= */
+
+const newsGrid = document.getElementById("newsGrid");
+const loading = document.getElementById("loading");
+const empty = document.getElementById("empty");
+const errorBox = document.getElementById("error");
+
+const daftarBerita = document.getElementById("daftarBerita");
+const detailBerita = document.getElementById("detailBerita");
+
+const detailImage = document.getElementById("detailImage");
+const detailDate = document.getElementById("detailDate");
+const detailTitle = document.getElementById("detailTitle");
+const detailText = document.getElementById("detailText");
+
+
+/* =========================================================
+   FORMAT TANGGAL
+   ========================================================= */
+
+function formatTanggal(tanggal){
+
+    if(!tanggal){
+        return "";
+    }
+
+    const d = new Date(tanggal);
+
+    return d.toLocaleDateString("id-ID",{
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+    });
+}
+
+
+/* =========================================================
+   POTONG ISI BERITA
+   ========================================================= */
+
+function ringkas(text, panjang = 150){
+
+    if(!text){
+        return "";
+    }
+
+    const bersih = text.replace(/\s+/g," ").trim();
+
+    if(bersih.length <= panjang){
+        return bersih;
+    }
+
+    return bersih.substring(0,panjang) + "...";
+}
+
+
+/* =========================================================
+   AMBIL DATA BERITA
+   ========================================================= */
+
+async function ambilBerita(){
+
+    loading.style.display = "block";
+    newsGrid.innerHTML = "";
+    empty.style.display = "none";
+    errorBox.style.display = "none";
+
+    try{
+
+        const url =
+            SUPABASE_URL +
+            "/rest/v1/berita" +
+            "?select=id,judul,slug,isi,foto_utama,status,tanggal_terbit,created_at" +
+            "&status=eq.TERBIT" +
+            "&order=tanggal_terbit.desc.nullslast,created_at.desc";
+
+        const response = await fetch(url,{
+
+            headers:{
+                "apikey":SUPABASE_KEY,
+                "Authorization":"Bearer " + SUPABASE_KEY
+            }
+
+        });
+
+
+        if(!response.ok){
+
+            const pesan = await response.text();
+
+            console.error("Supabase error:",pesan);
+
+            throw new Error("Gagal mengambil berita");
+
+        }
+
+
+        const berita = await response.json();
+
+        loading.style.display = "none";
+
+
+        if(!berita.length){
+
+            empty.style.display = "block";
+            return;
+
+        }
+
+
+        berita.forEach(item => {
+
+            const card = document.createElement("a");
+
+            card.className = "news-card";
+
+            card.href =
+                "?slug=" +
+                encodeURIComponent(item.slug);
+
+
+            if(item.foto_utama){
+
+                const img =
+                    document.createElement("img");
+
+                img.className = "news-image";
+
+                img.src = item.foto_utama;
+
+                img.alt = item.judul || "Berita GEPARU";
+
+                img.loading = "lazy";
+
+                card.appendChild(img);
+
+            }else{
+
+                const noImage =
+                    document.createElement("div");
+
+                noImage.className = "no-image";
+
+                noImage.textContent = "📰";
+
+                card.appendChild(noImage);
+
+            }
+
+
+            const body =
+                document.createElement("div");
+
+            body.className = "news-body";
+
+
+            const date =
+                document.createElement("div");
+
+            date.className = "news-date";
+
+            date.textContent =
+                formatTanggal(
+                    item.tanggal_terbit ||
+                    item.created_at
+                );
+
+
+            const title =
+                document.createElement("div");
+
+            title.className = "news-title";
+
+            title.textContent =
+                item.judul || "";
+
+
+            const excerpt =
+                document.createElement("div");
+
+            excerpt.className = "news-excerpt";
+
+            excerpt.textContent =
+                ringkas(item.isi);
+
+
+            const readMore =
+                document.createElement("div");
+
+            readMore.className = "read-more";
+
+            readMore.textContent =
+                "Baca selengkapnya →";
+
+
+            body.appendChild(date);
+            body.appendChild(title);
+            body.appendChild(excerpt);
+            body.appendChild(readMore);
+
+            card.appendChild(body);
+
+            newsGrid.appendChild(card);
+
+        });
+
+    }catch(err){
+
+        console.error(err);
+
+        loading.style.display = "none";
+
+        errorBox.style.display = "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   DETAIL BERITA
+   ========================================================= */
+
+async function ambilDetail(slug){
+
+    daftarBerita.style.display = "none";
+    detailBerita.style.display = "block";
+
+    try{
+
+        const url =
+            SUPABASE_URL +
+            "/rest/v1/berita" +
+            "?select=id,judul,slug,isi,foto_utama,status,tanggal_terbit,created_at" +
+            "&slug=eq." +
+            encodeURIComponent(slug) +
+            "&status=eq.TERBIT" +
+            "&limit=1";
+
+
+        const response = await fetch(url,{
+
+            headers:{
+                "apikey":SUPABASE_KEY,
+                "Authorization":"Bearer " + SUPABASE_KEY
+            }
+
+        });
+
+
+        if(!response.ok){
+            throw new Error("Gagal mengambil detail berita");
+        }
+
+
+        const data = await response.json();
+
+
+        if(!data.length){
+
+            detailTitle.textContent =
+                "Berita tidak ditemukan.";
+
+            detailText.textContent =
+                "Berita yang Anda cari belum tersedia atau sudah tidak diterbitkan.";
+
+            return;
+
+        }
+
+
+        const item = data[0];
+
+
+        detailTitle.textContent =
+            item.judul || "";
+
+
+        detailDate.textContent =
+            formatTanggal(
+                item.tanggal_terbit ||
+                item.created_at
+            );
+
+
+        detailText.textContent =
+            item.isi || "";
+
+
+        if(item.foto_utama){
+
+            detailImage.src =
+                item.foto_utama;
+
+            detailImage.alt =
+                item.judul || "Berita GEPARU";
+
+            detailImage.style.display =
+                "block";
+
+        }else{
+
+            detailImage.style.display =
+                "none";
+
+        }
+
+    }catch(err){
+
+        console.error(err);
+
+        detailTitle.textContent =
+            "Gagal memuat berita.";
+
+        detailText.textContent =
+            "Silakan coba kembali.";
+
+    }
+
+}
+
+
+/* =========================================================
+   TAMPILKAN DAFTAR
+   ========================================================= */
+
+function tampilkanDaftar(){
+
+    history.pushState(
+        {},
+        "",
+        window.location.pathname
+    );
+
+    detailBerita.style.display =
+        "none";
+
+    daftarBerita.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   KEMBALI KE BERANDA
+   ========================================================= */
+
+function kembaliBeranda(){
+
+    window.location.href =
+        "../";
+
+}
+
+
+/* =========================================================
+   CEK URL SLUG
+   ========================================================= */
+
+function cekHalaman(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const slug =
+        params.get("slug");
+
+
+    if(slug){
+
+        ambilDetail(slug);
+
+    }else{
+
+        ambilBerita();
+
+    }
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+cekHalaman();
+
+</script>
+
+</body>
+</html>
