@@ -717,4 +717,25 @@ document
 
   });
 </script>
+  <script>
+document.querySelectorAll('#gbNavigation a[href="#gbHubungi"]').forEach(function(link){
+
+  link.onclick = function(e){
+
+    e.preventDefault();
+
+    // tutup hamburger
+    const nav = document.getElementById("gbNavigation");
+
+    if(nav){
+      nav.classList.remove("gb-open");
+    }
+
+    // buka popup Hubungi Kami
+    bukaHubungi();
+
+  };
+
+});
+</script>
 </body></html>
