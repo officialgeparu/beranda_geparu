@@ -228,17 +228,26 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   color:#0b46b8;
 }
 
-.qris-placeholder{
-  min-height:220px;
-  border:2px dashed #b8c9e5;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#0b46b8;
-  font-weight:800;
-  background:#f5f8ff;
-  margin:15px 0;
+.qris-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border: 2px dashed #b8cdf5;
+    border-radius: 16px;
+    background: #f5f8ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.qris-placeholder img {
+    display: block;
+    width: min(100%, 300px);
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .bank-row{
@@ -450,8 +459,8 @@ document.querySelectorAll(".mobile-menu a").forEach(function (link) {
 
       <!-- NANTI QRIS YANG SUDAH ADA DI FORM ADUAN DITEMPEL DI SINI -->
       <div class="qris-placeholder">
-        QRIS GEPARU
-      </div>
+    <img src="qris-geparu.png" alt="QRIS Donasi GEPARU">
+</div>
 
     </div>
 
