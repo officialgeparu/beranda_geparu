@@ -810,6 +810,112 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   }
 
 }
+  /* =========================================
+   GARIS STRUKTUR ORGANISASI
+========================================= */
+
+/* garis vertikal komando */
+.struktur-level{
+  position:relative;
+}
+
+/* garis komando vertikal antar level */
+.level-atas::after{
+  content:"";
+  position:absolute;
+  top:100%;
+  left:50%;
+  width:2px;
+  height:18px;
+  background:#334155;
+}
+
+.level-pengurus::after{
+  content:"";
+  position:absolute;
+  top:100%;
+  left:50%;
+  width:2px;
+  height:20px;
+  background:#334155;
+}
+
+/* garis horizontal koordinasi bagian atas */
+.level-atas::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:18%;
+  right:18%;
+  border-top:2px dashed #334155;
+}
+
+/* garis koordinasi antar pimpinan */
+.level-pengurus::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:35%;
+  right:35%;
+  border-top:2px dashed #334155;
+}
+
+/* garis menuju kelompok divisi */
+.level-pengurus + .struktur-divisi{
+  position:relative;
+  padding-top:22px;
+}
+
+.level-pengurus + .struktur-divisi::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  border-top:2px solid #334155;
+}
+
+/* garis vertikal menuju divisi */
+.divisi-card{
+  position:relative;
+}
+
+.divisi-card::before{
+  content:"";
+  position:absolute;
+  top:-23px;
+  left:50%;
+  width:2px;
+  height:23px;
+  background:#334155;
+}
+
+/* garis koordinasi antar kepala divisi */
+.struktur-divisi::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  border-top:2px dashed #334155;
+  pointer-events:none;
+}
+
+/* garis menuju anggota bawah */
+.struktur-divisi + .struktur-level{
+  position:relative;
+  padding-top:22px;
+}
+
+.struktur-divisi + .struktur-level::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:2px;
+  height:22px;
+  background:#334155;
+}
 </style>
 </head>
 <body>
