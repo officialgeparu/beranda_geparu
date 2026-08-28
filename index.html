@@ -529,6 +529,287 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
   font-weight:700;
   cursor:pointer;
 }
+  /* =========================================
+   POPUP STRUKTUR GEPARU
+========================================= */
+
+.popup-struktur{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99998;
+  background:rgba(0,0,0,.55);
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.popup-struktur.show{
+  display:flex;
+}
+
+.popup-struktur-box{
+  position:relative;
+  width:100%;
+  max-width:950px;
+  max-height:92vh;
+  overflow-y:auto;
+  background:#fff;
+  border-radius:20px;
+  padding:30px 25px 25px;
+  box-sizing:border-box;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.popup-struktur-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#eef3f8;
+  color:#123b5d;
+  font-size:27px;
+  cursor:pointer;
+}
+
+.popup-struktur-icon{
+  width:58px;
+  height:58px;
+  margin:0 auto 10px;
+  border-radius:50%;
+  background:#eaf2ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#0757c9;
+  font-size:27px;
+}
+
+.popup-struktur-box h2{
+  margin:0;
+  text-align:center;
+  color:#123b5d;
+  font-size:25px;
+  font-weight:900;
+}
+
+.struktur-subtitle{
+  margin:7px 0 25px;
+  text-align:center;
+  color:#64748b;
+  font-size:14px;
+}
+
+/* LEVEL */
+
+.struktur-level{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.level-atas{
+  justify-content:space-around;
+}
+
+.level-pengurus{
+  gap:35px;
+}
+
+/* CARD PIMPINAN */
+
+.struktur-card{
+  min-width:150px;
+  padding:12px 16px;
+  border-radius:10px;
+  text-align:center;
+  background:#fff;
+  border:2px solid #1d4ed8;
+  color:#102a43;
+  box-sizing:border-box;
+}
+
+.struktur-card strong{
+  display:block;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.struktur-card.pimpinan{
+  background:#eaf2ff;
+}
+
+.struktur-card.utama{
+  background:#dff1ff;
+  border-color:#0757c9;
+}
+
+.anggota-besar{
+  background:#f7d7f1;
+  border-color:#c084b5;
+}
+
+/* DIVISI */
+
+.struktur-divisi{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.divisi-card{
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.divisi-header{
+  padding:11px 6px;
+  text-align:center;
+  background:#d8f2c8;
+  border-bottom:1px solid #a8d69a;
+}
+
+.divisi-header strong{
+  display:block;
+  font-size:12px;
+  color:#17351c;
+  line-height:1.4;
+}
+
+.divisi-header span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  font-weight:800;
+  color:#365314;
+}
+
+.anggota-list div{
+  padding:7px 4px;
+  border-bottom:1px solid #cbd5e1;
+  text-align:center;
+  font-size:12px;
+  color:#334155;
+}
+
+.anggota-list div:last-child{
+  border-bottom:0;
+}
+
+/* KETERANGAN */
+
+.struktur-keterangan{
+  margin-top:25px;
+  padding:18px;
+  border-radius:14px;
+  background:#f5f8fc;
+  border:1px solid #e2e8f0;
+}
+
+.struktur-keterangan h3{
+  margin:0 0 12px;
+  color:#0757c9;
+  font-size:17px;
+}
+
+.struktur-keterangan p{
+  margin:7px 0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* NOTE */
+
+.struktur-note{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:20px;
+  color:#475569;
+  font-size:12px;
+}
+
+.garis-solid{
+  width:45px;
+  height:2px;
+  background:#334155;
+}
+
+.garis-putus{
+  width:45px;
+  border-top:2px dashed #334155;
+}
+
+/* BACK */
+
+.popup-struktur-back{
+  display:block;
+  margin:20px auto 0;
+  padding:10px 22px;
+  border:0;
+  border-radius:9px;
+  background:#edf1f5;
+  color:#123b75;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* HP */
+
+@media(max-width:700px){
+
+  .popup-struktur{
+    padding:8px;
+  }
+
+  .popup-struktur-box{
+    max-height:94vh;
+    padding:25px 12px 20px;
+    border-radius:17px;
+  }
+
+  .popup-struktur-box h2{
+    font-size:21px;
+  }
+
+  .struktur-subtitle{
+    font-size:12px;
+  }
+
+  .struktur-divisi{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .struktur-card{
+    min-width:125px;
+  }
+
+  .struktur-card strong{
+    font-size:11px;
+  }
+
+  .divisi-header strong{
+    font-size:11px;
+  }
+
+  .anggota-list div{
+    font-size:11px;
+  }
+
+}
 </style>
 </head>
 <body>
@@ -536,7 +817,7 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 <header>
 <a class="brand" href="#"><div class="logo"><img src="logo-geparu.png" alt="Logo GEPARU"></div><div><div class="bn">GEPARU</div><div class="bs">GENERASI PADJAJARAN BARU</div></div></a>
 <nav>
-<a href="#">Beranda</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/">Aduan</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/#cek-status">Cek Aduan</a><a href="#" onclick="bukaDonasi(); return false;">Donasi</a><a href="https://officialgeparu.github.io/beranda_geparu/berita/">Berita</a><a href="javascript:void(0)" onclick="bukaHubungi()">Hubungi Kami</a><a href="href="#" onclick="bukaVisiMisi(); return false;">Visi &amp; Misi</a><a href="#">Struktur</a><a href="https://officialgeparu.github.io/company_profile_geparu/">Company Profile</a>
+<a href="#">Beranda</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/">Aduan</a><a href="https://officialgeparu.github.io/layanan_aduan_sosial/#cek-status">Cek Aduan</a><a href="#" onclick="bukaDonasi(); return false;">Donasi</a><a href="https://officialgeparu.github.io/beranda_geparu/berita/">Berita</a><a href="javascript:void(0)" onclick="bukaHubungi()">Hubungi Kami</a><a href="href="#" onclick="bukaVisiMisi(); return false;">Visi &amp; Misi</a><a href="#" onclick="bukaStruktur(); return false;">Struktur</a><a href="https://officialgeparu.github.io/company_profile_geparu/">Company Profile</a>
 </nav><button class="menu" id="menuBtn" type="button" aria-label="Buka menu">
   ☰
 </button>
@@ -573,9 +854,9 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
     🎯 Visi &amp; Misi
   </a>
 
-  <a href="#">
-    ♣ Struktur
-  </a>
+  <a href="#" onclick="bukaStruktur(); return false;">
+  ♣ Struktur
+</a>
 
   <a href="https://officialgeparu.github.io/company_profile_geparu/">
     🏢 Company Profile
@@ -599,7 +880,7 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 <a class="card" href="#"><div class="icon">🏠</div><h3>Beranda</h3><p>Kembali ke halaman utama</p><span class="ca">➜</span></a>
 <a class="card" href="javascript:void(0)" onclick="bukaHubungi()"><div class="icon">📞</div><h3>Hubungi Kami</h3><p>Hubungi kami untuk informasi lebih lanjut</p><span class="ca">➜</span></a>
 <a class="card" href="#" onclick="bukaVisiMisi(); return false;"><div class="icon">🎯</div><h3>Visi &amp; Misi</h3><p>Visi dan misi GEPARU untuk masa depan</p><span class="ca">➜</span></a>
-<a class="card" href="#"><div class="icon">♣</div><h3>Struktur</h3><p>Struktur organisasi GEPARU</p><span class="ca">➜</span></a>
+<a class="card" href="#" onclick="bukaStruktur(); return false;"><div class="icon">♣</div><h3>Struktur</h3><p>Struktur organisasi GEPARU</p><span class="ca">➜</span></a>
 <a class="card" href="https://officialgeparu.github.io/company_profile_geparu/"><div class="icon">🏢</div><h3>Company Profile</h3><p>Profil lengkap tentang GEPARU</p><span class="ca">➜</span></a>
 </section>
 <footer><div class="foot"><div><b style="font-size:25px">GEPARU</b><div style="font-size:10px">GENERASI PADJAJARAN BARU</div><p>follow sosial media kami: @geparu_media</p><div class="social"><span>f</span><span>ig</span><span>yt</span><span>tt</span></div></div><div><h4>Layanan</h4><a>Aduan</a><br><a>Cek Aduan</a><br><a>Donasi</a><br><a>Berita</a></div><div><h4>Informasi</h4><a>Visi &amp; Misi</a><br><a>Struktur</a><br><a>Company Profile</a></div><div><h4>Hubungi Kami</h4><p>📞 0813-8057-4646 or 0813-1084-4778</p><p>✉ officialgeparu@gmail.com</p><p>◎ Bogor, Jawa Barat</p></div></div><div class="copyr">GEPARU - Generasi Padjajaran Baru | Copyright 2026 © All Rights Reserved by PT adiimasa distribusi indonesia. &nbsp;|&nbsp; Foto Tugu Kujang: Wikimedia Commons (CC BY-SA 4.0).</div></footer>
@@ -719,6 +1000,27 @@ document.querySelectorAll(".mobile-menu a").forEach(function (link) {
   </div>
 </div>
   <script>
+    function bukaStruktur(){
+
+  const popup =
+    document.getElementById("popupStruktur");
+
+  if(popup){
+    popup.classList.add("show");
+  }
+
+}
+
+function tutupStruktur(){
+
+  const popup =
+    document.getElementById("popupStruktur");
+
+  if(popup){
+    popup.classList.remove("show");
+  }
+
+}
 
 function bukaDonasi(){
   document.getElementById("donasiPopup").classList.add("show");
@@ -1014,4 +1316,219 @@ if(popupVisiMisi){
 }
 
 </script>
+  <!-- =========================================
+     POPUP STRUKTUR GEPARU
+========================================= -->
+
+<div id="popupStruktur" class="popup-struktur">
+
+  <div class="popup-struktur-box">
+
+    <button
+      type="button"
+      class="popup-struktur-close"
+      onclick="tutupStruktur()">
+      ×
+    </button>
+
+    <div class="popup-struktur-icon">♣</div>
+
+    <h2>Struktur GEPARU</h2>
+
+    <p class="struktur-subtitle">
+      Struktur Organisasi Generasi Padjajaran Baru
+    </p>
+
+    <!-- PIMPINAN ATAS -->
+    <div class="struktur-level level-atas">
+
+      <div class="struktur-card pimpinan">
+        <strong>ADE SANJAYA</strong>
+        <strong>HENDRA BUDIMAN</strong>
+      </div>
+
+      <div class="struktur-card pimpinan">
+        <strong>SALMAN ALFARISI</strong>
+      </div>
+
+      <div class="struktur-card pimpinan">
+        <strong>RIDWAN</strong>
+        <strong>HERDIANSYAH</strong>
+      </div>
+
+    </div>
+
+    <!-- PIMPINAN TENGAH -->
+    <div class="struktur-level">
+
+      <div class="struktur-card pimpinan utama">
+        <strong>AHMAD FAJAR</strong>
+      </div>
+
+    </div>
+
+    <!-- PENGURUS -->
+    <div class="struktur-level level-pengurus">
+
+      <div class="struktur-card pimpinan">
+        <strong>HERMANSYAH</strong>
+      </div>
+
+      <div class="struktur-card pimpinan">
+        <strong>SIGIT SUKOCO AW</strong>
+      </div>
+
+    </div>
+
+    <!-- DIVISI -->
+    <div class="struktur-divisi">
+
+      <!-- SPB -->
+      <div class="divisi-card">
+
+        <div class="divisi-header">
+          <strong>SAEPUDIN</strong>
+          <span>SPB</span>
+        </div>
+
+        <div class="anggota-list">
+          <div>DIKI KIMO</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+        </div>
+
+      </div>
+
+      <!-- HIK -->
+      <div class="divisi-card">
+
+        <div class="divisi-header">
+          <strong>M. ANDRIS WIJAYA</strong>
+          <span>HIK</span>
+        </div>
+
+        <div class="anggota-list">
+          <div>SUYATNO</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+        </div>
+
+      </div>
+
+      <!-- PSDM -->
+      <div class="divisi-card">
+
+        <div class="divisi-header">
+          <strong>IKHWAN</strong>
+          <span>PSDM</span>
+        </div>
+
+        <div class="anggota-list">
+          <div>PEKING</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+        </div>
+
+      </div>
+
+      <!-- POPK -->
+      <div class="divisi-card">
+
+        <div class="divisi-header">
+          <strong>TYAS FIRMANDI C</strong>
+          <span>POPK</span>
+        </div>
+
+        <div class="anggota-list">
+          <div>KIPLI</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+        </div>
+
+      </div>
+
+      <!-- EKK -->
+      <div class="divisi-card">
+
+        <div class="divisi-header">
+          <strong>RIZKY SAPUTRA</strong>
+          <span>EKK</span>
+        </div>
+
+        <div class="anggota-list">
+          <div>YONA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+          <div>ANGGOTA</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ANGGOTA -->
+    <div class="struktur-level">
+
+      <div class="struktur-card anggota-besar">
+        <strong>ANGGOTA</strong>
+      </div>
+
+    </div>
+
+    <!-- KETERANGAN DIVISI -->
+    <div class="struktur-keterangan">
+
+      <h3>DIVISI GEPARU</h3>
+
+      <p>
+        <strong>PSDM</strong> — Divisi Pengembangan Sumber Daya Manusia
+      </p>
+
+      <p>
+        <strong>POPK</strong> — Divisi Pemuda, Olahraga dan Pembinaan Karakter
+      </p>
+
+      <p>
+        <strong>EKK</strong> — Divisi Ekonomi Kreatif dan Kewirausahaan
+      </p>
+
+      <p>
+        <strong>SPB</strong> — Divisi Sosial dan Penanggulangan Bencana
+      </p>
+
+      <p>
+        <strong>HIK</strong> — Divisi Hubungan Sosial, Informasi dan Komunikasi Publik
+      </p>
+
+    </div>
+
+    <div class="struktur-note">
+
+      <span class="garis-solid"></span>
+      <span>Garis Komando</span>
+
+      <span class="garis-putus"></span>
+      <span>Garis Koordinasi</span>
+
+    </div>
+
+    <button
+      type="button"
+      class="popup-struktur-back"
+      onclick="tutupStruktur()">
+      ← Kembali
+    </button>
+
+  </div>
+
+</div>
 </body></html>
