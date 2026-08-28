@@ -322,6 +322,93 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
     text-align:left;
     cursor:pointer;
 } 
+  /* ===== POPUP HUBUNGI KAMI ===== */
+
+.popup-hubungi{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(0,0,0,.55);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.popup-hubungi.show{
+  display:flex;
+}
+
+.popup-hubungi-box{
+  position:relative;
+  width:100%;
+  max-width:400px;
+  background:#fff;
+  border-radius:22px;
+  padding:32px 24px 25px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.popup-close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  border:0;
+  background:transparent;
+  color:#555;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.popup-icon{
+  width:60px;
+  height:60px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  background:#eaf2ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+.popup-hubungi-box h2{
+  margin:0 0 8px;
+  color:#123b75;
+}
+
+.popup-subtitle{
+  margin:0 0 20px;
+  color:#666;
+}
+
+.nomor-wa{
+  display:block;
+  margin:10px 0;
+  padding:14px;
+  border-radius:12px;
+  background:#0757c9;
+  color:#fff !important;
+  text-decoration:none;
+  font-size:15px;
+  line-height:1.5;
+}
+
+.nomor-wa strong{
+  font-size:17px;
+}
+
+.popup-back{
+  margin-top:12px;
+  padding:11px 24px;
+  border:0;
+  border-radius:10px;
+  background:#edf1f5;
+  color:#123b75;
+  font-weight:700;
+  cursor:pointer;
+}
 </style>
 </head>
 <body>
@@ -390,7 +477,7 @@ footer{background:linear-gradient(110deg,#083e9e,#062c72);color:#fff}.foot{max-w
 </section>
 <section class="grid second">
 <a class="card" href="#"><div class="icon">🏠</div><h3>Beranda</h3><p>Kembali ke halaman utama</p><span class="ca">➜</span></a>
-<a class="card" href="#"><div class="icon">📞</div><h3>Hubungi Kami</h3><p>Hubungi kami untuk informasi lebih lanjut</p><span class="ca">➜</span></a>
+<a class="card" href="javascript:void(0)" onclick="bukaHubungi()"><div class="icon">📞</div><h3>Hubungi Kami</h3><p>Hubungi kami untuk informasi lebih lanjut</p><span class="ca">➜</span></a>
 <a class="card" href="#"><div class="icon">🎯</div><h3>Visi &amp; Misi</h3><p>Visi dan misi GEPARU untuk masa depan</p><span class="ca">➜</span></a>
 <a class="card" href="#"><div class="icon">♣</div><h3>Struktur</h3><p>Struktur organisasi GEPARU</p><span class="ca">➜</span></a>
 <a class="card" href="https://officialgeparu.github.io/company_profile_geparu/"><div class="icon">🏢</div><h3>Company Profile</h3><p>Profil lengkap tentang GEPARU</p><span class="ca">➜</span></a>
@@ -559,5 +646,76 @@ document.addEventListener("keydown",function(e){
 
 });
 
+</script>
+  <!-- POPUP HUBUNGI KAMI -->
+<div id="popupHubungi" class="popup-hubungi">
+
+  <div class="popup-hubungi-box">
+
+    <button
+      class="popup-close"
+      onclick="tutupHubungi()">
+      ×
+    </button>
+
+    <div class="popup-icon">
+      💬
+    </div>
+
+    <h2>Hubungi Kami</h2>
+
+    <p class="popup-subtitle">
+      Hubungi GEPARU melalui WhatsApp
+    </p>
+
+    <a
+      class="nomor-wa"
+      href="https://wa.me/6281380574646"
+      target="_blank"
+      rel="noopener">
+      💬 WhatsApp<br>
+      <strong>0813-8057-4646</strong>
+    </a>
+
+    <a
+      class="nomor-wa"
+      href="https://wa.me/6281310844778"
+      target="_blank"
+      rel="noopener">
+      💬 WhatsApp<br>
+      <strong>0813-1084-4778</strong>
+    </a>
+
+    <button
+      class="popup-back"
+      onclick="tutupHubungi()">
+      ← Kembali
+    </button>
+
+  </div>
+
+</div>
+  <script>
+function bukaHubungi(){
+  document
+    .getElementById("popupHubungi")
+    .classList.add("show");
+}
+
+function tutupHubungi(){
+  document
+    .getElementById("popupHubungi")
+    .classList.remove("show");
+}
+
+document
+  .getElementById("popupHubungi")
+  .addEventListener("click", function(e){
+
+    if(e.target === this){
+      tutupHubungi();
+    }
+
+  });
 </script>
 </body></html>
