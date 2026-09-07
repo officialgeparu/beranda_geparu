@@ -1443,6 +1443,52 @@ document.addEventListener("keydown", function(e){
     }
   };
 
+  /* Rekam semua interaksi utama: link, tombol, dan kontrol yang bisa diklik.
+     Tidak merekam isi input/form agar data pribadi warga tidak ikut tersimpan. */
+  document.addEventListener("click", function(e){
+    const target = e.target && e.target.closest
+      ? e.target.closest("a, button, [role='button'], input[type='button'], input[type='submit']")
+      : null;
+
+    if (!target || !window.GEPARU_ANALYTICS) return;
+
+    const rawLabel = (
+      target.getAttribute("data-analytics-label") ||
+      target.getAttribute("aria-label") ||
+      target.innerText ||
+      target.value ||
+      target.title ||
+      target.id ||
+      target.className ||
+      target.tagName
+    );
+
+    const label = String(rawLabel || "Interaksi").replace(/\s+/g, " ").trim().slice(0, 150);
+    const href = target.tagName === "A" ? (target.href || target.getAttribute("href") || "") : "";
+
+    window.GEPARU_ANALYTICS.trackEvent(
+      "click",
+      "interaction",
+      label,
+      {
+        element: target.tagName.toLowerCase(),
+        id: target.id || "",
+        href: href,
+        page: location.pathname + location.search
+      }
+    );
+
+    /* Penanda khusus untuk layanan Cek Aduan agar mudah dianalisis. */
+    if (/cek aduan/i.test(label) || /#cek-status/i.test(href)){
+      window.GEPARU_ANALYTICS.trackEvent(
+        "service_open",
+        "layanan",
+        "Cek Aduan",
+        { service: "cek_aduan", href: href }
+      );
+    }
+  }, true);
+
   trackPageview();
 })();
 </script>
