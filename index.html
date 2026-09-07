@@ -933,7 +933,10 @@ document.querySelectorAll(".mobile-menu a").forEach(function (link) {
   <script>
     
 function bukaDonasi(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Donasi", { popup:"donasi" });
+  if (window.GEPARU_ANALYTICS) {
+    window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Donasi", { popup:"donasi" });
+    window.GEPARU_ANALYTICS.trackVirtualPage("Donasi", "Donasi GEPARU");
+  }
   document.getElementById("donasiPopup").classList.add("show");
   document.body.style.overflow="hidden";
 }
@@ -1030,7 +1033,10 @@ document.addEventListener("keydown",function(e){
 </div>
   <script>
 function bukaHubungi(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Hubungi Kami", { popup:"hubungi_kami" });
+  if (window.GEPARU_ANALYTICS) {
+    window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Hubungi Kami", { popup:"hubungi_kami" });
+    window.GEPARU_ANALYTICS.trackVirtualPage("Hubungi Kami", "Hubungi Kami GEPARU");
+  }
   document
     .getElementById("popupHubungi")
     .classList.add("show");
@@ -1230,7 +1236,10 @@ document.querySelectorAll('#gbNavigation a[href="#gbHubungi"]').forEach(function
 ========================================= */
 
 function bukaVisiMisi(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Visi & Misi", { popup:"visi_misi" });
+  if (window.GEPARU_ANALYTICS) {
+    window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Visi & Misi", { popup:"visi_misi" });
+    window.GEPARU_ANALYTICS.trackVirtualPage("Visi & Misi", "Visi & Misi GEPARU");
+  }
 
   const popup =
     document.getElementById("popupVisiMisi");
@@ -1263,7 +1272,10 @@ function tutupVisiMisi(){
 ========================================= */
 
 function bukaStruktur(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Struktur Organisasi", { popup:"struktur" });
+  if (window.GEPARU_ANALYTICS) {
+    window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Struktur Organisasi", { popup:"struktur" });
+    window.GEPARU_ANALYTICS.trackVirtualPage("Struktur Organisasi", "Struktur Organisasi GEPARU");
+  }
 
   const popup =
     document.getElementById("popupStruktur");
@@ -1485,11 +1497,6 @@ document.addEventListener("keydown", function(e){
       }
     );
 
-    const importantInteraction = /^(donasi|visi\s*&?\s*misi|struktur|hubungi kami|cek aduan)$/i.test(label);
-    if (importantInteraction && window.GEPARU_ANALYTICS.trackVirtualPage){
-      window.GEPARU_ANALYTICS.trackVirtualPage(label, label + " — GEPARU");
-    }
-
     /* Penanda khusus untuk layanan Cek Aduan agar mudah dianalisis. */
     if (/cek aduan/i.test(label) || /#cek-status/i.test(href)){
       window.GEPARU_ANALYTICS.trackEvent(
@@ -1498,6 +1505,9 @@ document.addEventListener("keydown", function(e){
         "Cek Aduan",
         { service: "cek_aduan", href: href }
       );
+      if (window.GEPARU_ANALYTICS.trackVirtualPage){
+        window.GEPARU_ANALYTICS.trackVirtualPage("Cek Aduan", "Cek Aduan GEPARU");
+      }
     }
   }, true);
 
