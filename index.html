@@ -1409,14 +1409,16 @@ document.addEventListener("keydown", function(e){
     });
   }
 
-  function trackPageview(){
+  function trackPageview(customPath, customTitle){
+    const pagePath = customPath || (location.pathname + location.search);
+    const pageTitle = customTitle || document.title;
     return send({
       action: "pageview",
       visitor_id: visitorId,
       session_id: sessionId,
-      page_path: location.pathname + location.search,
-      page_title: document.title,
-      page_url: location.href,
+      page_path: pagePath,
+      page_title: pageTitle,
+      page_url: location.origin + pagePath,
       referrer: document.referrer || "",
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
       language: navigator.language || "",
@@ -1440,6 +1442,11 @@ document.addEventListener("keydown", function(e){
         page_path: location.pathname + location.search,
         metadata: metadata || {}
       });
+    },
+    trackPageview: trackPageview,
+    trackVirtualPage: function(name, title){
+      const safeName = String(name || "interaksi").toLowerCase().replace(/[^a-z0-9_-]+/g, "-").replace(/^-+|-+$/g, "");
+      return trackPageview(location.pathname + "#analytics-" + safeName, title || (document.title + " — " + name));
     }
   };
 
@@ -1477,6 +1484,11 @@ document.addEventListener("keydown", function(e){
         page: location.pathname + location.search
       }
     );
+
+    const importantInteraction = /^(donasi|visi\s*&?\s*misi|struktur|hubungi kami|cek aduan)$/i.test(label);
+    if (importantInteraction && window.GEPARU_ANALYTICS.trackVirtualPage){
+      window.GEPARU_ANALYTICS.trackVirtualPage(label, label + " — GEPARU");
+    }
 
     /* Penanda khusus untuk layanan Cek Aduan agar mudah dianalisis. */
     if (/cek aduan/i.test(label) || /#cek-status/i.test(href)){
