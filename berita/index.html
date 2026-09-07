@@ -1343,5 +1343,619 @@ if(document.readyState === "loading"){
 <!-- =========================================================
      END GEPARU BERITA PUBLIK — VIEW COUNTER
 ========================================================= -->
+    <!-- =========================================================
+     GEPARU PLATFORM ANALYTICS
+     TRACKER BERITA
+========================================================= -->
+
+<script>
+
+(function(){
+
+"use strict";
+
+
+/* =========================================================
+   KONFIGURASI
+========================================================= */
+
+const ANALYTICS_SUPABASE_URL =
+    "https://fysaxpqpqexjnlpkbwap.supabase.co";
+
+
+const ANALYTICS_SUPABASE_KEY =
+    "sb_publishable_DWRaEZTcNMjhglwN3nqCOw_pua8rsjD";
+
+
+const ANALYTICS_CLIENT =
+    "GEPARU";
+
+
+const ANALYTICS_MODULE =
+    "SOSIAL";
+
+
+
+/* =========================================================
+   BUAT UNIQUE VISITOR ID
+========================================================= */
+
+function getAnalyticsVisitorId(){
+
+    const storageKey =
+        "geparu_analytics_visitor_id";
+
+
+    let visitorId =
+        localStorage.getItem(storageKey);
+
+
+    if(!visitorId){
+
+        visitorId =
+            "visitor_" +
+            Date.now().toString(36) +
+            "_" +
+            Math.random()
+            .toString(36)
+            .substring(2,12);
+
+
+        localStorage.setItem(
+            storageKey,
+            visitorId
+        );
+
+    }
+
+
+    return visitorId;
+
+}
+
+
+
+/* =========================================================
+   BUAT SESSION ID
+========================================================= */
+
+function getAnalyticsSessionId(){
+
+    const storageKey =
+        "geparu_analytics_session_id";
+
+
+    let sessionId =
+        sessionStorage.getItem(storageKey);
+
+
+    if(!sessionId){
+
+        sessionId =
+            "session_" +
+            Date.now().toString(36) +
+            "_" +
+            Math.random()
+            .toString(36)
+            .substring(2,12);
+
+
+        sessionStorage.setItem(
+            storageKey,
+            sessionId
+        );
+
+    }
+
+
+    return sessionId;
+
+}
+
+
+
+/* =========================================================
+   DETEKSI DEVICE
+========================================================= */
+
+function getDeviceType(){
+
+    const ua =
+        navigator.userAgent
+        .toLowerCase();
+
+
+    if(
+        /tablet|ipad/.test(ua)
+    ){
+
+        return "tablet";
+
+    }
+
+
+    if(
+        /mobile|android|iphone|ipod/.test(ua)
+    ){
+
+        return "mobile";
+
+    }
+
+
+    return "desktop";
+
+}
+
+
+
+/* =========================================================
+   DETEKSI OPERATING SYSTEM
+========================================================= */
+
+function getOperatingSystem(){
+
+    const ua =
+        navigator.userAgent;
+
+
+    if(/Windows/i.test(ua)){
+
+        return "Windows";
+
+    }
+
+
+    if(/Android/i.test(ua)){
+
+        return "Android";
+
+    }
+
+
+    if(/iPhone|iPad|iPod/i.test(ua)){
+
+        return "iOS";
+
+    }
+
+
+    if(/Mac OS/i.test(ua)){
+
+        return "macOS";
+
+    }
+
+
+    if(/Linux/i.test(ua)){
+
+        return "Linux";
+
+    }
+
+
+    return "Unknown";
+
+}
+
+
+
+/* =========================================================
+   DETEKSI BROWSER
+========================================================= */
+
+function getBrowser(){
+
+    const ua =
+        navigator.userAgent;
+
+
+    if(
+        /Edg\//i.test(ua)
+    ){
+
+        return "Microsoft Edge";
+
+    }
+
+
+    if(
+        /OPR\//i.test(ua)
+    ){
+
+        return "Opera";
+
+    }
+
+
+    if(
+        /Chrome\//i.test(ua)
+        &&
+        !/Edg\//i.test(ua)
+        &&
+        !/OPR\//i.test(ua)
+    ){
+
+        return "Chrome";
+
+    }
+
+
+    if(
+        /Safari\//i.test(ua)
+        &&
+        !/Chrome\//i.test(ua)
+    ){
+
+        return "Safari";
+
+    }
+
+
+    if(
+        /Firefox\//i.test(ua)
+    ){
+
+        return "Firefox";
+
+    }
+
+
+    return "Unknown";
+
+}
+
+
+
+/* =========================================================
+   AMBIL REFERRER DOMAIN
+========================================================= */
+
+function getReferrerDomain(){
+
+    try{
+
+        if(!document.referrer){
+
+            return null;
+
+        }
+
+
+        return new URL(
+            document.referrer
+        ).hostname;
+
+
+    }catch(error){
+
+        return null;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TENTUKAN JENIS HALAMAN
+========================================================= */
+
+function getAnalyticsPageData(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const slug =
+        params.get("slug");
+
+
+    /* =========================================
+       DETAIL BERITA
+    ========================================= */
+
+    if(slug){
+
+        return {
+
+            page_path:
+
+                "/beranda_geparu/berita/" +
+                "?slug=" +
+                encodeURIComponent(slug),
+
+
+            page_title:
+
+                document.title +
+                " — " +
+                slug,
+
+
+            page_url:
+
+                window.location.href,
+
+            page_type:
+
+                "detail_berita",
+
+            slug:
+
+                slug
+
+        };
+
+    }
+
+
+    /* =========================================
+       DAFTAR BERITA
+    ========================================= */
+
+    return {
+
+        page_path:
+            "/beranda_geparu/berita/",
+
+
+        page_title:
+            document.title,
+
+
+        page_url:
+            window.location.href,
+
+
+        page_type:
+            "daftar_berita",
+
+        slug:
+            null
+
+    };
+
+}
+
+
+
+/* =========================================================
+   KIRIM DATA KE SUPABASE
+========================================================= */
+
+async function trackGEPARUAnalytics(){
+
+    try{
+
+
+        const visitorId =
+            getAnalyticsVisitorId();
+
+
+        const sessionId =
+            getAnalyticsSessionId();
+
+
+        const page =
+            getAnalyticsPageData();
+
+
+        const response =
+            await fetch(
+
+                ANALYTICS_SUPABASE_URL +
+                "/rest/v1/rpc/track_platform_analytics",
+
+                {
+
+                    method:"POST",
+
+
+                    headers:{
+
+                        "apikey":
+                            ANALYTICS_SUPABASE_KEY,
+
+
+                        "Authorization":
+                            "Bearer " +
+                            ANALYTICS_SUPABASE_KEY,
+
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+
+                    body:
+                    JSON.stringify({
+
+                        p_visitor_id:
+                            visitorId,
+
+
+                        p_session_id:
+                            sessionId,
+
+
+                        p_client_name:
+                            ANALYTICS_CLIENT,
+
+
+                        p_module_slug:
+                            ANALYTICS_MODULE,
+
+
+                        p_page_path:
+                            page.page_path,
+
+
+                        p_page_title:
+                            page.page_title,
+
+
+                        p_page_url:
+                            page.page_url,
+
+
+                        p_device_type:
+                            getDeviceType(),
+
+
+                        p_operating_system:
+                            getOperatingSystem(),
+
+
+                        p_browser:
+                            getBrowser(),
+
+
+                        p_screen_width:
+                            window.screen.width,
+
+
+                        p_screen_height:
+                            window.screen.height,
+
+
+                        p_timezone:
+
+                            Intl.DateTimeFormat()
+                            .resolvedOptions()
+                            .timeZone,
+
+
+                        p_language:
+
+                            navigator.language,
+
+
+                        p_referrer:
+
+                            document.referrer ||
+                            null,
+
+
+                        p_referrer_domain:
+
+                            getReferrerDomain()
+
+                    })
+
+                }
+
+            );
+
+
+        if(!response.ok){
+
+            const errorText =
+                await response.text();
+
+
+            console.warn(
+
+                "Analytics gagal:",
+
+                errorText
+
+            );
+
+
+            return;
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+
+            "✓ GEPARU Analytics aktif",
+
+            result
+
+        );
+
+
+    }catch(error){
+
+        console.warn(
+
+            "Analytics error:",
+
+            error
+
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TRACK HALAMAN SETELAH SISTEM BERITA DIMUAT
+========================================================= */
+
+function startGEPARUAnalytics(){
+
+
+    /*
+       Beri waktu sistem berita
+       untuk memuat judul/detail
+    */
+
+    setTimeout(
+
+        trackGEPARUAnalytics,
+
+        1200
+
+    );
+
+}
+
+
+
+/* =========================================================
+   MULAI
+========================================================= */
+
+if(
+    document.readyState ===
+    "loading"
+){
+
+    document.addEventListener(
+
+        "DOMContentLoaded",
+
+        startGEPARUAnalytics
+
+    );
+
+
+}else{
+
+    startGEPARUAnalytics();
+
+}
+
+
+})();
+
+</script>
+
+
+<!-- =========================================================
+     END GEPARU PLATFORM ANALYTICS
+========================================================= -->
 </body>
 </html>
