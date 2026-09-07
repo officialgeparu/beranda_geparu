@@ -933,7 +933,7 @@ document.querySelectorAll(".mobile-menu a").forEach(function (link) {
   <script>
     
 function bukaDonasi(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("open_donasi", "navigasi", "Donasi");
+  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Donasi", { popup:"donasi" });
   document.getElementById("donasiPopup").classList.add("show");
   document.body.style.overflow="hidden";
 }
@@ -1030,7 +1030,7 @@ document.addEventListener("keydown",function(e){
 </div>
   <script>
 function bukaHubungi(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("open_hubungi", "navigasi", "Hubungi Kami");
+  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Hubungi Kami", { popup:"hubungi_kami" });
   document
     .getElementById("popupHubungi")
     .classList.add("show");
@@ -1230,7 +1230,7 @@ document.querySelectorAll('#gbNavigation a[href="#gbHubungi"]').forEach(function
 ========================================= */
 
 function bukaVisiMisi(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("open_visi_misi", "navigasi", "Visi & Misi");
+  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Visi & Misi", { popup:"visi_misi" });
 
   const popup =
     document.getElementById("popupVisiMisi");
@@ -1263,7 +1263,7 @@ function tutupVisiMisi(){
 ========================================= */
 
 function bukaStruktur(){
-  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("open_struktur", "navigasi", "Struktur Organisasi");
+  if (window.GEPARU_ANALYTICS) window.GEPARU_ANALYTICS.trackEvent("popup_open", "engagement", "Struktur Organisasi", { popup:"struktur" });
 
   const popup =
     document.getElementById("popupStruktur");
